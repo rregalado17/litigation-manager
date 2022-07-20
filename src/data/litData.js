@@ -8,12 +8,12 @@ const litData = [
         opposing_party: null,
         status: "Active",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 2,
         first_name: "Christopher",
         last_name: "Moore",
         retainer: null
-        }
+        }]
         },
         {
         id: 2,
@@ -24,12 +24,12 @@ const litData = [
         opposing_party: null,
         status: "Concluded",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 3,
         first_name: "Jon",
         last_name: "Blackman",
         retainer: null
-        }
+        }]
         },
         {
         id: 3,
@@ -40,12 +40,12 @@ const litData = [
         opposing_party: null,
         status: "Concluded",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 2,
         first_name: "Christopher",
         last_name: "Moore",
         retainer: null
-        }
+        }]
         },
         {
         id: 4,
@@ -56,12 +56,12 @@ const litData = [
         opposing_party: null,
         status: "Concluded",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 1,
         first_name: "Howard",
         last_name: "Zelbo",
         retainer: null
-        }
+        }]
         },
         {
         id: 5,
@@ -72,12 +72,12 @@ const litData = [
         opposing_party: null,
         status: "Concluded",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 2,
         first_name: "Christopher",
         last_name: "Moore",
         retainer: null
-        }
+        }]
         },
         {
         id: 6,
@@ -88,12 +88,12 @@ const litData = [
         opposing_party: null,
         status: "Concluded",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 3,
         first_name: "Jon",
         last_name: "Blackman",
         retainer: null
-        }
+        }]
         },
         {
         id: 7,
@@ -104,12 +104,12 @@ const litData = [
         opposing_party: null,
         status: "Concluded",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 2,
         first_name: "Christopher",
         last_name: "Moore",
         retainer: null
-        }
+        }]
         },
         {
         id: 8,
@@ -120,12 +120,12 @@ const litData = [
         opposing_party: null,
         status: "Concluded",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 3,
         first_name: "Jon",
         last_name: "Blackman",
         retainer: null
-        }
+        }]
         },
         {
         id: 9,
@@ -136,12 +136,12 @@ const litData = [
         opposing_party: null,
         status: "Concluded",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 1,
         first_name: "Howard",
         last_name: "Zelbo",
         retainer: null
-        }
+        }]
         },
         {
         id: 10,
@@ -152,12 +152,12 @@ const litData = [
         opposing_party: null,
         status: "Concluded",
         costs: null,
-        lawyer: {
+        lawyer: [{
         id: 1,
         first_name: "Howard",
         last_name: "Zelbo",
         retainer: null
-        }
+        }]
         }
 ]
 

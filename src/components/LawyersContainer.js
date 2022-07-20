@@ -12,6 +12,7 @@ const LawyersContainer = () => {
         return <Lawyer key={lawyer.id} {...lawyer} /> 
         })} 
     </div>
+    
   )
 }
 

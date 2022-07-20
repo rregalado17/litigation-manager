@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import litData from '../data/litData'
 
 const initialState = {
-    litigations: litData,
+    litData: litData,
 }
 
 const litigationSlice = createSlice({

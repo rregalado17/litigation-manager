@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-
+import lawyersData from '../data/lawyersData'
+ 
 const initialState = {
-    lawyers: [],
+    lawyersData: lawyersData,
+    firstName: 'Tom',
     isLoading: true
 }
 
@@ -10,6 +12,5 @@ const lawyerSlice = createSlice({
     initialState,
 })
 
-// console.log(lawyerSlice)
 
 export default lawyerSlice.reducer

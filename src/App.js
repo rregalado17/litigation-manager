@@ -1,11 +1,14 @@
 import './App.css';
+import LawyersContainer from './components/LawyersContainer';
+import Navbar from './components/Navbar'
 
 function App() {
   
   return (
-    <div className="App">
-      <header className="App-header">Hello</header>
-    </div>
+    <main>
+      <Navbar/>
+      <LawyersContainer />
+    </main>
   );
 }
 

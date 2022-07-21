@@ -13,7 +13,7 @@ const Lawyer = ( {id, first_name, last_name, litigations } ) => {
         return <li>{lit.caption} </li>
       } ) }
       <button
-      onClick={() => dispatch(likeLawyer(id))}>
+        onClick={() => dispatch(likeLawyer(id))}>
         Like!
       </button>
     </div>

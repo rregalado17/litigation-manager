@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const litigationsURL = 'http://localhost:3000/api/v1/litigations'
+
 const initialState = {
     litData: [],
 }

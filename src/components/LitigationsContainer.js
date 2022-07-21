@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux'
 
 const LitigationsContainer = () => {
 
-  const { litData } = useSelector((store) => store.litigation)
+const  litigationsArray  = useSelector((store) => store.litigation.litigations)
 
   return (
     <div>LitigationsContainer
-      {litData.map((lit) => {
-        return <Litigation key={lit.id} {...lit} /> 
-        })}
-
+      {litigationsArray && litigationsArray.length && litigationsArray.map((litigation) => {
+        return <Litigation key={litigation.id} {...litigation}/> 
+      })}
+            {/* {console.log(litigationsArray[0])} */}
     </div>
   )
 }

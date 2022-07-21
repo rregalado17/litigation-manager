@@ -11,7 +11,7 @@ const Lawyer = ( {id, first_name, last_name, litigations } ) => {
       <h2>{first_name} {last_name}</h2>
       {litigations.map((lit) => {
         return <li>{lit.caption} </li>
-      } ) }
+      })}
       <button
         onClick={() => dispatch(likeLawyer(id))}>
         Like!

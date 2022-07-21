@@ -4,19 +4,15 @@ import { useSelector } from 'react-redux'
 
 const LawyersContainer = () => {
 
-  // const { lawyersData } = useSelector((store) => store.lawyer)
-  const lawyersArray = useSelector((store) => store.lawyer)
+  const lawyersArray = useSelector((store) => store.lawyer.lawyers)
  
   return (
     
     <div>LawyersContainer
-      {/* {console.log(lawyersArray.lawyers[0].first_name)} */}
-      {/* {lawyersData.map((lawyer) => {
-        return <Lawyer key={lawyer.id} {...lawyer} /> 
-        })}  */}
-        {lawyersArray && lawyersArray.length && lawyersArray.lawyers.map((lawyer) => {
-          return <Lawyer key={lawyer.id} {...lawyer} />
+        {lawyersArray && lawyersArray.length && lawyersArray.map((lawyer) => {
+          return <Lawyer key={lawyer.id} {...lawyer} /> 
         })}
+      {/* {console.log(lawyersArray[0])} */}
     </div>
     
   )

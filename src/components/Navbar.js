@@ -2,9 +2,6 @@ import { useSelector } from "react-redux";
 
 
 const Navbar = () => {
-
-
-
     return (
         <nav>
             <div className='nav-center'>

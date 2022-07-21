@@ -18,16 +18,16 @@ function App() {
     dispatch(fetchLitigations())
   }, [])
 
-  // if(isLoading) {
-  //   return <div>
-  //     <h1>Loading...</h1>
-  //   </div>
-  // }
+  if(isLoading) {
+    return <div>
+      <h1>Loading...</h1>
+    </div>
+  }
 
   return (
     <main>
       <Navbar/>
-       <LawyersContainer />
+      <LawyersContainer />
       <LitigationsContainer />
     </main>
   );

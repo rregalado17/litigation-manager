@@ -1,14 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-// import lawyersData from '../data/lawyersData'
 
-const url = 'http://localhost:3000/api/v1/lawyers'
+const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
  
 const initialState = {
-    lawyersData: [],
+    lawyersData: []
 }
 
 export const fetchLawyers = createAsyncThunk('lawyer/fetchLawyers', () => {
-    return fetch(url)
+    return fetch(lawyersURL)
     .then((resp) => resp.json())
     .catch((err) => console.log(err))
 })

@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 import {
   BrowserRouter as Router,
   Routes, Route
-} from 'react-router-dom';
+} from 'react-router-dom';import { Link } from 'react-router-dom'
+
 
 const LawyersContainer = () => {
 
@@ -15,8 +16,20 @@ const LawyersContainer = () => {
       <Routes>
 
       </Routes>
-      {lawyersArray && lawyersArray.length && lawyersArray.map((lawyer) => {
+      <h2>Browse the profiles of lawyers in our system:</h2>
+      {/* {lawyersArray && lawyersArray.length && lawyersArray.map((lawyer) => {
           return <Lawyer key={lawyer.id} {...lawyer} /> 
+        })} */}
+        {lawyersArray && lawyersArray.length && lawyersArray.map((lawyer) => {
+          return <div key={lawyer.id}>
+            <Link 
+            className='lawyerBtn'
+            to={`/lawyers/${lawyer.id}`}
+            >
+            <Lawyer {...lawyer} />
+            </Link>
+
+            </div> 
         })}
     </div>
   )

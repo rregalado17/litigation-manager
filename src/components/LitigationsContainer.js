@@ -13,11 +13,9 @@ const  litigationsArray  = useSelector((store) => store.litigation.litigations)
   return (
     <div>
       <Routes>
-        {/* <Route path='/lawyers/new' component={LawyerInput}/> */}
-        {/* <Route path='/litigations/:id' render= {(routerProps) => <Litigation {...routerProps} litigations={this.props.litigations}/>}/> */}
         <Route exact path='/litigations'/>
+        <Route path='litigations/:id' element={<Litigation />} />
         {/* <Route exact path='litigations/lawyers' render={() => <Lawyers lawyers={this.props.litigations.lawyers}/>}/> */}
-    
       </Routes>
       {litigationsArray && litigationsArray.length && litigationsArray.map((litigation) => {
         return <Litigation key={litigation.id} {...litigation}/> 

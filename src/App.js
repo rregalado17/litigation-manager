@@ -20,12 +20,15 @@ function App() {
   const { store, isLoading} = useSelector((store) => store.lawyer)
   const dispatch = useDispatch();
 
-  // const lawyersArray = useSelector((store) => store.lawyer.lawyers)
+  const lawyersArray = useSelector((store) => store.lawyer.lawyers)
 
   useEffect(() => {
     dispatch(fetchLawyers());
     dispatch(fetchLitigations())
   }, [])
+
+
+  
 
   if(isLoading) {
     return <div>
@@ -38,13 +41,24 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/lawyers/:id" element={<Lawyer />} />
-        <Route path='/lawyers/*' element={<LawyersContainer/>} />
+        {/* <Route path="/lawyers/:id" element={<Lawyer lawyersArray={lawyersArray}/>} /> */}
+        <Route path='/lawyers/' element={<LawyersContainer lawyersArray={lawyersArray}/>}/> 
+          <Route path="/lawyers/:id" element={<Lawyer lawyersArray={lawyersArray}/>} />
+        <Route />
         <Route path='/litigations/*' element={<LitigationsContainer/>} />
-
+        <Route 
+          path='*'
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+        <Route />
       </Routes>
     </main>
   );
 }
+
 
 export default App;

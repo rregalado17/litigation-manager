@@ -2,10 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 // import { likeLawyer } from '../reducers/lawyerSlice'
 // import { useDispatch, useSelector } from 'react-redux'
-// import { Link } from 'react-router-dom'
-// import LawyersContainer from './LawyersContainer'
 
-const Lawyer = ( {id, first_name, last_name, litigations, lawyersArray} ) => {
+const Lawyer = ({ lawyersArray}) => {
   
   // const dispatch = useDispatch();
 
@@ -13,20 +11,28 @@ const Lawyer = ( {id, first_name, last_name, litigations, lawyersArray} ) => {
   // const lawyerId = lawyersArray.filter(lawyer => lawyer.id === id)
   
 
-  let params = useParams();
+  let { id } = useParams();
   
-  function getLawyerId() {
-    lawyersArray.find(
-      (lawyer) => lawyer.id === params.id
+  function getLawyerId(id) {
+    return lawyersArray && lawyersArray.length && lawyersArray.find(
+      (lawyer) => String(lawyer.id) === id
     )
-  }
+}
 
-  let lawyer = getLawyerId(parseInt(params.id));
+  let lawyerProfile = getLawyerId(id);
 
   return (
     <div>
 
-    {console.log(lawyer)}
+      <h2>{lawyerProfile ? lawyerProfile.first_name : null} {lawyerProfile ? lawyerProfile.last_name : null}</h2>
+
+      <h3>{lawyersArray && lawyersArray.length && lawyerProfile.litigations.map((litigation) => {
+        return <li key={litigation.id}>
+          {litigation.caption}
+          </li>
+      })}</h3>
+
+    {/* {console.log(lawyerProfile.litigations[0].caption)} */}
 
       {/* <h2>{console.log(id)}</h2> */}
       {/* {litigations.map((lit) => {

@@ -1,25 +1,31 @@
 import React from 'react'
 import Litigation from '../components/Litigation'
 import { useSelector } from 'react-redux'
-import {
-  BrowserRouter as Router,
-  Routes, Route
-} from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
-const LitigationsContainer = () => {
-
-const  litigationsArray  = useSelector((store) => store.litigation.litigations)
+const LitigationsContainer = ( {litigationsArray} ) => {
 
   return (
     <div>
-      <Routes>
-        <Route exact path='/litigations'/>
-        <Route path='litigations/:id' element={<Litigation />} />
-        {/* <Route exact path='litigations/lawyers' render={() => <Lawyers lawyers={this.props.litigations.lawyers}/>}/> */}
-      </Routes>
+      <h2>Litigation Experience:</h2>
+      { litigationsArray && litigationsArray.length && litigationsArray.map((lit) => {
+        return <div key={lit.id}>
+          <Link
+            className='litigationBttn'
+            to={`/litigations/${lit.id}`}
+          >
+          {lit.caption}
+      </Link>
+      </div>
+      })}
+      {/* <Link 
+        className='litigationBttn'
+         to={`/litigations/${litigation.id}`}
+      >
       {litigationsArray && litigationsArray.length && litigationsArray.map((litigation) => {
         return <Litigation key={litigation.id} {...litigation}/> 
-      })}
+      })} 
+      </Link> */}
     </div>
   )
 }

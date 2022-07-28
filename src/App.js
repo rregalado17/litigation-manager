@@ -21,6 +21,7 @@ function App() {
   const dispatch = useDispatch();
 
   const lawyersArray = useSelector((store) => store.lawyer.lawyers)
+  const litigationsArray = useSelector((store) => store.litigation.litigations)
 
   useEffect(() => {
     dispatch(fetchLawyers());
@@ -41,11 +42,12 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/lawyers/:id" element={<Lawyer lawyersArray={lawyersArray}/>} /> */}
         <Route path='/lawyers/' element={<LawyersContainer lawyersArray={lawyersArray}/>}/> 
           <Route path="/lawyers/:id" element={<Lawyer lawyersArray={lawyersArray}/>} />
         <Route />
-        <Route path='/litigations/*' element={<LitigationsContainer/>} />
+        <Route path='/litigations/' element={<LitigationsContainer litigationsArray={litigationsArray}/>} />
+          <Route path="/litigations/:id" element={<Litigation litigationsArray={litigationsArray}/>} />
+        <Route /> 
         <Route 
           path='*'
           element={

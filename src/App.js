@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchLawyers } from './reducers/lawyerSlice';
 import { fetchLitigations } from './reducers/litigationSlice';
+import LawyerInput  from './components/LawyerInput';
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
         <Route path='/litigations/' element={<LitigationsContainer litigationsArray={litigationsArray}/>} />
           <Route path="/litigations/:id" element={<Litigation litigationsArray={litigationsArray}/>} />
         <Route /> 
+        <Route path="/lawyers/new" element={<LawyerInput />}/> 
         <Route 
           path='*'
           element={

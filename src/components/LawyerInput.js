@@ -1,24 +1,36 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
+import { addLawyer } from '../reducers/lawyerSlice'
 
 export const LawyerInput = () => {
 
+  const dispatch = useDispatch();
   
-  
-  handleSubmit = (event) => {
-    this.console.log(event)
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.addLawyer(this.state)
+    this.setState({
+      first_name: '', last_name: ''
+    })
+  }
+
 
   return (
     <div>
       <form onSubmit={this.handleSubmit}>
-        <laber>Submit Your New Lawyer Form</laber>
-        <input type='text' placeholder='First Name' value={this.state.first_name} />
-        <input type='text' placeholder='Last Name' value={this.state.last_name} />
-        <input type='submit' />
+        <label>Submit Your New Lawyer Form</label>
+        <p><input type='text' placeholder='First Name' /></p>
+        <p><input type='text' placeholder='Last Name'  /></p>
+        <p><input type='submit' /></p>
       </form>
     </div>
   )
 }
 
-export default LawyerInput
+export default connect(null, {addLawyer})(LawyerInput)

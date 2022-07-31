@@ -12,13 +12,19 @@ export const fetchLawyers = createAsyncThunk('lawyer/fetchLawyers', () => {
     .catch((err) => console.log(err))
 })
 
+// export const addLawyer = createAsyncThunk('lawyer/addLawyer', () => {
+//     return fetch(lawyersURL)
+//     .then(res => res.json())
+//     .then(lawyer => dispatch({type: 'ADD_LAWYER', payload: lawyer}))
+// })
+
 const lawyerSlice = createSlice({
     name: 'lawyer',
     initialState,
     reducers: {
-        likeLawyer: (state, action) => {
-            console.log(action)
-        },
+//         likeLawyer: (state, action) => {
+//             console.log(action)
+//         },
         addLawyer: (state, action) => {
             console.log(action)
         }

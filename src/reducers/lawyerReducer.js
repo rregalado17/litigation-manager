@@ -1,7 +1,9 @@
+import { FETCH_LAWYERS } from '../actionTypes'
+
 export default function lawyerReducer(state = {lawyers: []}, action) {
 
     switch (action.type){
-        case 'FETCH_LAWYERS':
+        case FETCH_LAWYERS:
             return {lawyers: action.payload}
         
         case 'ADD_LAWYER':

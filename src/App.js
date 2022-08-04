@@ -47,11 +47,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='/lawyers/' element={<LawyersContainer lawyersArray={lawyersArray}/>}/> 
           <Route path="/lawyers/:id" element={<Lawyer lawyersArray={lawyersArray}/>} />
+          <Route path="/lawyers/new" element={<LawyerInput lawyersArray={lawyersArray}/>} />
         <Route />
         <Route path='/litigations/' element={<LitigationsContainer litigationsArray={litigationsArray}/>} />
           <Route path="/litigations/:id" element={<Litigation litigationsArray={litigationsArray}/>} />
         <Route /> 
-        <Route path="/lawyers/new" element={<LawyerInput />}/> 
         <Route 
           path='*'
           element={

@@ -1,13 +1,13 @@
-import { FETCH_LAWYERS } from '../actionTypes'
+import * as actions from '../actionTypes'
 
 export default function lawyerReducer(state = {lawyers: []}, action) {
 
     switch (action.type){
-        case FETCH_LAWYERS:
+        case actions.FETCH_LAWYERS:
             return {lawyers: action.payload}
         
-        case 'ADD_LAWYER':
-            return {...state, lawyers: [...state.lawyers, action.payload]}
+        // case actions.ADD_LAWYER:
+        //     return {...state, lawyers: [...state.lawyers, action.payload]}
         
         // case 'ADD_LITIGATION':
         //     let addLit = state.lawyers.map(lawyer => {

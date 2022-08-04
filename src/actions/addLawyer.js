@@ -1,5 +1,5 @@
-import { ADD_LAWYER } from "../actionTypes";
-import { createAsyncThunk } from '@reduxjs/toolkit'
+// import { ADD_LAWYER } from "../actionTypes";
+// import { createAsyncThunk } from '@reduxjs/toolkit'
 
 const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
 
@@ -9,7 +9,7 @@ const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
 //     .then(lawyer => dispatch({type: 'ADD_LAWYER', payload: lawyer}))
 // })
 
-export const addLawyer = (data) => {
+export function addLawyer (data) {
     return (dispatch) => {
         fetch('http://localhost:3000/api/v1/lawyers', {
             headers: {

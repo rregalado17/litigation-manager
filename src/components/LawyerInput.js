@@ -1,34 +1,38 @@
 import React from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import { addLawyer } from '../actions/addLawyer'
 
-
+// const lawyersArray = useSelector((store) => store.lawyer.lawyers)
 
 class LawyerInput extends React.Component {
 
     handleChange = (event) => {
-      this.setState({
-        [event.target.name]: event.target.value
-      })
+      // this.setState({
+      //   [event.target.name]: event.target.value
+      // })
+      console.log(event)
     }
 
     handleSubmit = (event) => {
       event.preventDefault()
-      this.props.addLawyer(this.state)
-      this.setState({
-        first_name: '', last_name: ''
-      })
+      // this.props.addLawyer(this.state)
+      // this.setState({
+      //   first_name: '', last_name: ''
+      // })
+      console.log(event)
     }
 
-    return (){
+    render (){
+      return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>Submit Your New Lawyer Form</label>
-          <p><input type='text' placeholder='First Name' /></p>
-          <p><input type='text' placeholder='Last Name'  /></p>
+          <p><input type='text' placeholder='First Name' onChange={this.handleChange} /></p>
+          <p><input type='text' placeholder='Last Name'  onChange={this.handleChange}/></p>
           <p><input type='submit' /></p>
         </form>
       </div>
+    )
   }
 }
 

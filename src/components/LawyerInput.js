@@ -28,7 +28,7 @@ class LawyerInput extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>Submit Your New Lawyer Form</label>
           <p><input type='text' placeholder='First Name' onChange={this.handleChange} /></p>
-          <p><input type='text' placeholder='Last Name'  onChange={this.handleChange}/></p>
+          <p><input type='text' placeholder='Last Name' onChange={this.handleChange} /></p>
           <p><input type='submit' /></p>
         </form>
       </div>

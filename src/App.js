@@ -12,8 +12,6 @@ import Lawyer from './components/Lawyer';
 import Litigation from './components/Litigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-// import { fetchLawyers } from './reducers/lawyerSlice';
-// import { fetchLitigations } from './reducers/litigationSlice';
 import LawyerInput  from './components/LawyerInput';
 import { fetchLawyers } from './actions/fetchLawyers';
 import { fetchLitigations } from './actions/fetchLitigations';
@@ -22,7 +20,7 @@ function App() {
 
   const { store, isLoading} = useSelector((store) => store.lawyer)
   const dispatch = useDispatch();
-
+  
   const lawyersArray = useSelector((store) => store.lawyer.lawyers)
   const litigationsArray = useSelector((store) => store.litigation.litigations)
 

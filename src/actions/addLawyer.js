@@ -1,4 +1,4 @@
-// import { ADD_LAWYER } from "../actionTypes";
+import * as actions from './actionTypes'
 // import { createAsyncThunk } from '@reduxjs/toolkit'
 
 const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
@@ -20,6 +20,6 @@ export function addLawyer (data) {
             body: JSON.stringify(data) 
         })
         .then(res => res.json())
-        .then(lawyer => dispatch({type: 'ADD_LAWYER', payload: lawyer}))
+        .then(lawyer => dispatch({type: actions.ADD_LAWYER, payload: lawyer}))
     }
 }

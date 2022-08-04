@@ -1,4 +1,4 @@
-import { FETCH_LITIGATIONS } from '../actionTypes'
+import { FETCH_LITIGATIONS } from '../actions/actionTypes'
 
 
 export default function litigationReducer(state = {litigations: []}, action) {

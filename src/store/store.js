@@ -1,7 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { devToolsEnhancer } from "redux-devtools-extension";
-// import lawyerReducer from '../reducers/lawyerSlice';
-// import litigationReducer from '../reducers/litigationSlice';
+import { devToolsEnhancer } from "redux-devtools-extension"; 
 import lawyerReducer from '../reducers/lawyerReducer';
 import litigationReducer from "../reducers/litigationReducer";
 

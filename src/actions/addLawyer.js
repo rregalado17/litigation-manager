@@ -8,11 +8,6 @@ const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
 //     .then(res => res.json())
 //     .then(lawyer => dispatch({type: 'ADD_LAWYER', payload: lawyer}))
 // })
-export const addLawyer = createAsyncThunk('lawyer/addLawyer', () => {
-    return fetch(lawyersURL)
-    .then(res => res.json())
-    .then(lawyer => dispatch({type: 'ADD_LAWYER', payload: lawyer}))
-})
 
 export function addLawyer (data) {
     return (dispatch) => {

@@ -15,7 +15,7 @@ export const store = configureStore (
     {reducer: {
         lawyer: lawyerReducer,
         litigation: litigationReducer,
-        law: lawReducer
+        // law: lawReducer
     }},
     devToolsEnhancer({ trace: true})
 ) 

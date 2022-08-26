@@ -3,7 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
  
 const initialState = {
-    lawyersData: []
+    lawyersData: [],
+    lastId: 0
 }
 
 export const fetchLawyers = createAsyncThunk('lawyer/fetchLawyers', () => {
@@ -12,20 +13,20 @@ export const fetchLawyers = createAsyncThunk('lawyer/fetchLawyers', () => {
     .catch((err) => console.log(err))
 })
 
-export const addLawyer = createAsyncThunk('lawyer/addLawyer', (data) => {
-    return (dispatch) => {
-        fetch('http://localhost:3000/api/v1/lawyers', {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify(data) 
-        })
-        .then(res => res.json())
-       .then(lawyer => dispatch({type: actions.ADD_LAWYER, payload: lawyer}))
-    }
-})
+// export const addLawyer = createAsyncThunk('lawyer/addLawyer', (data) => {
+//     return (dispatch) => {
+//         fetch('http://localhost:3000/api/v1/lawyers', {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/json'
+//             },
+//             method: 'POST',
+//             body: JSON.stringify(data) 
+//         })
+//         .then(res => res.json())
+//        .then(lawyer => dispatch({type: actions.ADD_LAWYER, payload: lawyer}))
+//     }
+// })
  
 // export const addLawyer = createAsyncThunk('lawyer/addLawyer', () => {
 //     return fetch(lawyersURL)
@@ -42,7 +43,7 @@ const lawyerSlice = createSlice({
         },
         addLawyer: (lawyers, action) => {
             lawyers.push({
-                id: ++lastId,
+                id: lastId++,
                 name: action.payload.name
             })
         }
@@ -61,5 +62,5 @@ const lawyerSlice = createSlice({
     }
 })
 console.log(lawyerSlice)
-export const { likeLawyer, addLawyer } = lawyerSlice.actions
+export const { likeLawyer } = lawyerSlice.actions
 export default lawyerSlice.reducer

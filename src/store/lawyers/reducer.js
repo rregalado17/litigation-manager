@@ -1,7 +1,7 @@
 import { createAction, createReducer } from "@reduxjs/toolkit"
 
 export const fetchLawyer = createAction("FETCH_LAWYERS")
-console.log(fetchLawyer())
+// console.log(fetchLawyer())
 
 const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
 

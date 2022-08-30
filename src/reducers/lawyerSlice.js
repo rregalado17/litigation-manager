@@ -41,12 +41,12 @@ const lawyerSlice = createSlice({
         likeLawyer: (state, action) => {
             console.log(action)
         },
-        addLawyer: (lawyers, action) => {
-            lawyers.push({
-                id: lastId++,
-                name: action.payload.name
-            })
-        }
+        // addLawyer: (lawyers, action) => {
+        //     lawyers.push({
+        //         id: lastId++,
+        //         name: action.payload.name
+        //     })
+        // }
     },
     extraReducers: {
         [fetchLawyers.pending]: (state) => {
@@ -61,6 +61,6 @@ const lawyerSlice = createSlice({
         }
     }
 })
-console.log(lawyerSlice)
+// console.log(lawyerSlice)
 export const { likeLawyer } = lawyerSlice.actions
 export default lawyerSlice.reducer

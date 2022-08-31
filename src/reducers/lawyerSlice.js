@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSelector } from 'reselect'
 
 const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
  
@@ -62,5 +63,12 @@ const lawyerSlice = createSlice({
     }
 })
 // console.log(lawyerSlice)
+
+export const getAllLawyers = createSelector(
+    state => state.lawyer.lawyers,
+    lawyer => lawyer.lawyers
+)
+
+
 export const { likeLawyer } = lawyerSlice.actions
 export default lawyerSlice.reducer

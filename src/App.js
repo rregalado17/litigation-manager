@@ -15,12 +15,14 @@ import { useEffect } from 'react';
 import LawyerInput  from './components/LawyerInput';
 import { fetchLawyers } from './actions/fetchLawyers';
 import { fetchLitigations } from './actions/fetchLitigations';
+import { getAllLawyers } from './reducers/lawyerSlice';
 
 function App() {
 
   const { store, isLoading} = useSelector((store) => store.lawyer)
   const dispatch = useDispatch();
-  
+
+  console.log(getAllLawyers)
   const lawyersArray = useSelector((store) => store.lawyer.lawyers)
   const litigationsArray = useSelector((store) => store.litigation.litigations)
 

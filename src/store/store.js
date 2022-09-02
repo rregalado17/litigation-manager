@@ -3,7 +3,7 @@ import { devToolsEnhancer } from "redux-devtools-extension";
 import lawyerReducer from '../reducers/lawyerReducer';
 import litigationReducer from "../reducers/litigationReducer";
 import lawReducer from './lawyers/reducer'
-
+import api from './middleware/api'
 
 let listeners = []
 
@@ -17,5 +17,8 @@ export const store = configureStore (
         litigation: litigationReducer,
         // law: lawReducer
     }},
+    {middleware: [
+        api
+    ]},
     devToolsEnhancer({ trace: true})
 ) 

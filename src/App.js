@@ -22,7 +22,7 @@ function App() {
   const { store, isLoading} = useSelector((store) => store.lawyer)
   const dispatch = useDispatch();
 
-  console.log(getAllLawyers)
+  // console.log(getAllLawyers)
   const lawyersArray = useSelector((store) => store.lawyer.lawyers)
   const litigationsArray = useSelector((store) => store.litigation.litigations)
 

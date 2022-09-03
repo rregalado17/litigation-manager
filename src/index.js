@@ -8,6 +8,7 @@ import {
   BrowserRouter as Router } from "react-router-dom";
 import { store } from './store/store';
 import { Provider } from 'react-redux';
+import * as actions from './store/api'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,6 +16,22 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 store.subscribe(() => {
   console.log('change')
 })
+
+store.dispatch(actions.apiCallBegan({
+    url:'/lawyers',
+    onSuccess: 'lawyersReceived',
+    onError: 'apiFailed'
+  }))
+
+// store.dispatch({
+//   type: "apiCallBegan",
+//   payload: {
+//     url:'/lawyers',
+//     onSuccess: 'lawyersReceived',
+//     onError: 'apiFailed'
+//   }
+// })
+
 
 root.render(
   <React.StrictMode>

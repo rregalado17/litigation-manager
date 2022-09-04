@@ -19,6 +19,7 @@ import { getAllLawyers } from './reducers/lawyerSlice';
 
 function App() {
 
+
   const { store, isLoading} = useSelector((store) => store.lawyer)
   const dispatch = useDispatch();
 
@@ -26,10 +27,10 @@ function App() {
   const lawyersArray = useSelector((store) => store.lawyer.lawyers)
   const litigationsArray = useSelector((store) => store.litigation.litigations)
 
-  useEffect(() => {
-    dispatch(fetchLawyers());
-    dispatch(fetchLitigations())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(fetchLawyers());
+  //   dispatch(fetchLitigations())
+  // }, [])
 
 
   

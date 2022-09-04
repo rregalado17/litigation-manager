@@ -17,21 +17,11 @@ store.subscribe(() => {
   console.log('change')
 })
 
-store.dispatch(actions.apiCallBegan({
-    url:'/lawyers',
-    onSuccess: 'lawyersReceived',
-    onError: 'apiFailed'
+store.dispatch(
+  actions.apiLawyersCall({
+    url: '/lawyers',
+    onSuccess: 'apiSuccess',
   }))
-
-// store.dispatch({
-//   type: "apiCallBegan",
-//   payload: {
-//     url:'/lawyers',
-//     onSuccess: 'lawyersReceived',
-//     onError: 'apiFailed'
-//   }
-// })
-
 
 root.render(
   <React.StrictMode>

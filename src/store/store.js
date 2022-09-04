@@ -16,9 +16,10 @@ export const store = configureStore (
         lawyer: lawyerReducer,
         litigation: litigationReducer,
         // law: lawReducer
-    }},
-    {middleware: [
+    },
+    middleware: [
         api
     ]},
     devToolsEnhancer({ trace: true})
-) 
+)
+

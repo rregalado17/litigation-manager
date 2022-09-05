@@ -5,6 +5,7 @@ import litigationReducer from "../reducers/litigationReducer";
 import lawyersRecieved from "./lawyers";
 import litigationsRecieved from "./litigations";
 import api from './middleware/api'
+import apiLitigations from "./middleware/apiLitigations";
 
 let listeners = []
 
@@ -20,7 +21,8 @@ export const store = configureStore (
         litigations: litigationsRecieved
     },
     middleware: [
-        api
+        api,
+        apiLitigations
     ]},
     devToolsEnhancer({ trace: true})
 )

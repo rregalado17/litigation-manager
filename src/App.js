@@ -19,7 +19,6 @@ import { getAllLawyers } from './reducers/lawyerSlice';
 
 function App() {
 
-
   const { store, isLoading} = useSelector((store) => store.lawyer)
   const dispatch = useDispatch();
 
@@ -31,9 +30,6 @@ function App() {
   //   dispatch(fetchLawyers());
   //   dispatch(fetchLitigations())
   // }, [])
-
-
-  
 
   if(isLoading) {
     return <div>
@@ -66,6 +62,5 @@ function App() {
     </main>
   );
 }
-
 
 export default App;

@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import { devToolsEnhancer } from "redux-devtools-extension"; 
 import lawyerReducer from '../reducers/lawyerReducer';
 import litigationReducer from "../reducers/litigationReducer";
-import lawReducer from './lawyers/reducer'
+import lawyersRecieved from "./lawyers";
+import litigationsRecieved from "./litigations";
 import api from './middleware/api'
 
 let listeners = []
@@ -15,7 +16,8 @@ export const store = configureStore (
     {reducer: {
         lawyer: lawyerReducer,
         litigation: litigationReducer,
-        // law: lawReducer
+        lawyers: lawyersRecieved,
+        litigations: litigationsRecieved
     },
     middleware: [
         api

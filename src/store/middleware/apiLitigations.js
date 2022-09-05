@@ -2,7 +2,7 @@ import axios from "axios";
 import * as actions from '../api';
 
 const api = ({dispatch}) => next => async action => {
-    if (action.type !== actions.apiLawyersCall.type) return next(action)
+    if (action.type !== actions.apiLitigationsCall.type) return next(action)
 
     next(action)
 
@@ -10,7 +10,7 @@ const api = ({dispatch}) => next => async action => {
 
     try {
         const response = await axios.request({
-            baseURL: "http://localhost:3000/api/v1",
+            baseURL: "http://localhost:3001/api/v1",
             url,
             method,
             data
@@ -21,7 +21,6 @@ const api = ({dispatch}) => next => async action => {
         dispatch(actions.apiCallFailed(error))
         if (onError) dispatch({ type: onError, payload: error });
     }
-
 }
 
-export default api;
+export default apiLitigations;

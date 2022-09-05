@@ -3,13 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './App.scss'
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {
+ import {
   BrowserRouter as Router } from "react-router-dom";
 import { store } from './store/store';
 import { Provider } from 'react-redux';
-import * as actions from './store/api'
-
+import { fetchLawyers } from './store/lawyers';
+import { fetchLitigations } from './store/litigations';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -17,11 +16,8 @@ store.subscribe(() => {
   console.log('change')
 })
 
-store.dispatch(
-  actions.apiLawyersCall({
-    url: '/lawyers',
-    onSuccess: 'apiSuccess',
-  }))
+store.dispatch(fetchLawyers());
+store.dispatch(fetchLitigations());
 
 root.render(
   <React.StrictMode>
@@ -32,21 +28,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-{/* <BrowserRouter>
-<Routes>
-  <Route path="/" element={<App />}>
-    <Route index element={<Home />} />
-    <Route path="teams" element={<Teams />}>
-      <Route path=":teamId" element={<Team />} />
-      <Route path="new" element={<NewTeamForm />} />
-      <Route index element={<LeagueStandings />} />
-    </Route>
-  </Route>
-</Routes>
-</BrowserRouter> */}
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();

@@ -30,11 +30,11 @@ const Lawyer = ({ lawyersArray}) => {
       })}</h3>
 
       <h4>Profile: {lawyerProfile ? lawyerProfile.profile : null}</h4>
-      
+{/*       
       <button
         onClick={() => dispatch(likeLawyer(id))}>
         Like!
-      </button>
+      </button> */}
 
     </div>
   )

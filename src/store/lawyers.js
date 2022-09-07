@@ -12,8 +12,12 @@ const slice = createSlice({
         lastFetch: null
     },
     reducers: {
+        lawyersRequested: (lawyers, action) => {
+            lawyers.loading = true;
+        },
         lawyersRecieved: (lawyers, action) => {
             lawyers.list = action.payload;
+            lawyers.loading = false;
         },
         // likeLawyer: (state, action) => {
         //     console.log(action)
@@ -29,6 +33,7 @@ const slice = createSlice({
 
 export const fetchLawyers = () =>  apiLawyersCall({
     url: '/lawyers',
+    onStart: lawyersRequested.type,
     onSuccess: lawyersRecieved.type
 })
 
@@ -38,5 +43,8 @@ export const fetchLawyers = () =>  apiLawyersCall({
 // )
 
 
-export const { lawyersRecieved, likeLawyer } = slice.actions
+export const { 
+    lawyersRecieved, 
+    likeLawyer,
+    lawyersRequested } = slice.actions
 export default slice.reducer

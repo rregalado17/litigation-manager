@@ -9,6 +9,8 @@ import { store } from './store/store';
 import { Provider } from 'react-redux';
 import { fetchLawyers } from './store/lawyers';
 import { fetchLitigations } from './store/litigations';
+import thunk from "redux-thunk" 
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -19,9 +21,9 @@ store.subscribe(() => {
 store.dispatch(fetchLawyers());
 // store.dispatch(fetchLitigations());
 
-// setTimeout(() => {
-//   store.dispatch(fetchLawyers());
-// }, 2000);
+setTimeout(() => {
+  store.dispatch(fetchLawyers());
+}, 2000);
 
 
 

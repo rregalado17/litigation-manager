@@ -6,6 +6,8 @@ import lawyersRecieved from "./lawyers";
 import litigationsRecieved from "./litigations";
 import api from './middleware/api'
 import apiLitigations from "./middleware/apiLitigations";
+import thunk from "redux-thunk" 
+
 
 let listeners = []
 
@@ -22,7 +24,8 @@ export const store = configureStore (
     },
     middleware: [
         api,
-        apiLitigations
+        apiLitigations,
+        thunk,
     ]},
     devToolsEnhancer({ trace: true})
 )

@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { createSelector } from 'reselect'
 import { apiLawyersCall } from './api'
+import thunk from "redux-thunk" 
+
 
 let lastId = 0; 
 
@@ -36,9 +38,9 @@ const slice = createSlice({
 })
 
 export const fetchLawyers = () => (dispatch, getState) => {
-    // const { lastFetch } = getState().lawyers;
+    const { lastFetch } = getState().lawyers;
 
-    // console.log(lastFetch)
+    console.log(lastFetch)
 
     dispatch(
         apiLawyersCall({
@@ -47,8 +49,8 @@ export const fetchLawyers = () => (dispatch, getState) => {
             onSuccess: lawyersRecieved.type,
             onError: lawyersRequestedFailed.type
         })
-    )
-}
+    );
+};
 
 // export const fetchLawyers = () =>  
 //     apiLawyersCall({

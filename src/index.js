@@ -17,7 +17,13 @@ store.subscribe(() => {
 })
 
 store.dispatch(fetchLawyers());
-store.dispatch(fetchLitigations());
+// store.dispatch(fetchLitigations());
+
+// setTimeout(() => {
+//   store.dispatch(fetchLawyers());
+// }, 2000);
+
+
 
 root.render(
   <React.StrictMode>

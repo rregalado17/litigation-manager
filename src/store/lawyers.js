@@ -15,9 +15,13 @@ const slice = createSlice({
         lawyersRequested: (lawyers, action) => {
             lawyers.loading = true;
         },
+        lawyersRequestedFailed: (lawyers, action ) => {
+            lawyers.loading = false;
+        },
         lawyersRecieved: (lawyers, action) => {
             lawyers.list = action.payload;
             lawyers.loading = false;
+            lawyers.lastFetch = Date.now()
         },
         // likeLawyer: (state, action) => {
         //     console.log(action)
@@ -31,11 +35,29 @@ const slice = createSlice({
     }
 })
 
-export const fetchLawyers = () =>  apiLawyersCall({
-    url: '/lawyers',
-    onStart: lawyersRequested.type,
-    onSuccess: lawyersRecieved.type
-})
+export const fetchLawyers = () => (dispatch, getState) => {
+    // const { lastFetch } = getState().lawyers;
+
+    // console.log(lastFetch)
+
+    dispatch(
+        apiLawyersCall({
+            url: '/lawyers',
+            onStart: lawyersRequested.type,
+            onSuccess: lawyersRecieved.type,
+            onError: lawyersRequestedFailed.type
+        })
+    )
+}
+
+// export const fetchLawyers = () =>  
+//     apiLawyersCall({
+//         url: '/lawyers',
+//         onStart: lawyersRequested.type,
+//         onSuccess: lawyersRecieved.type,
+//         onError: lawyersRequestedFailed.type
+//     }
+// )
 
 // export const getAllLawyers = createSelector(
 //     state => state.lawyer.lawyers,
@@ -46,5 +68,7 @@ export const fetchLawyers = () =>  apiLawyersCall({
 export const { 
     lawyersRecieved, 
     likeLawyer,
-    lawyersRequested } = slice.actions
+    lawyersRequested,
+    lawyersRequestedFailed } = slice.actions
+
 export default slice.reducer

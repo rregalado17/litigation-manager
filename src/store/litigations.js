@@ -2,8 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { createSelector } from 'reselect'
 import { apiLitigationsCall } from './api'
 
-let lastId = 0; 
-
 const slice = createSlice({
     name: 'litigations',
     initialState: {
@@ -14,6 +12,9 @@ const slice = createSlice({
     reducers: {
         litigationsRecieved: (litigations, action) => {
             litigations.array = action.payload;
+        },
+        litigationAdded: (litigations, action) => {
+            litigations.array.push(action.payload)
         }
     }
 })
@@ -23,5 +24,17 @@ export const fetchLitigations = () =>  apiLitigationsCall({
     onSuccess: litigationsRecieved.type
 })
 
-export const { litigationsRecieved } = slice.actions
+export const addLitigation = litigation => apiLitigationsCall({
+    url: '/litigations',
+    method: 'post',
+    data: litigation,
+    onSuccess: litigationAdded.type
+})
+
+
+
+
+export const { 
+    litigationsRecieved, 
+    litigationAdded } = slice.actions
 export default slice.reducer

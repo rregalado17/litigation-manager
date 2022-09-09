@@ -1,10 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { createSelector } from 'reselect'
 import { apiLawyersCall } from './api'
-import thunk from "redux-thunk" 
-
-
-let lastId = 0; 
+import moment from 'moment'
 
 const slice = createSlice({
     name: 'lawyers',
@@ -28,19 +25,23 @@ const slice = createSlice({
         // likeLawyer: (state, action) => {
         //     console.log(action)
         // },
-        // addLawyer: (lawyers, action) => {
-        //     lawyers.push({
-        //         id: lastId++,
-        //         name: action.payload.name
-        //     })
-        // }
+        lawyerAdded: (lawyers, action) => {
+            // lawyers.list.push({
+            //     id: ++lastId,
+            //     first_name: action.payload.first_name,
+            //     last_name: action.payload.last_name,
+            //     resolved: false
+            // })
+            lawyers.list.push(action.payload)
+        }
     }
 })
 
 export const fetchLawyers = () => (dispatch, getState) => {
     const { lastFetch } = getState().lawyers;
 
-    console.log(lastFetch)
+    const diffInMinutes = moment().diff(moment(lastFetch), 'minutes')
+    if (diffInMinutes < 10) return;
 
     dispatch(
         apiLawyersCall({
@@ -52,14 +53,16 @@ export const fetchLawyers = () => (dispatch, getState) => {
     );
 };
 
-// export const fetchLawyers = () =>  
-//     apiLawyersCall({
-//         url: '/lawyers',
-//         onStart: lawyersRequested.type,
-//         onSuccess: lawyersRecieved.type,
-//         onError: lawyersRequestedFailed.type
-//     }
-// )
+export const addLawyer = lawyer => apiLawyersCall({
+    url: '/lawyers',
+    method: 'post',
+    data: lawyer,
+    onSuccess: lawyerAdded.type
+})
+
+
+
+
 
 // export const getAllLawyers = createSelector(
 //     state => state.lawyer.lawyers,
@@ -69,8 +72,9 @@ export const fetchLawyers = () => (dispatch, getState) => {
 
 export const { 
     lawyersRecieved, 
-    likeLawyer,
+    // likeLawyer,
     lawyersRequested,
-    lawyersRequestedFailed } = slice.actions
+    lawyersRequestedFailed,
+    lawyerAdded } = slice.actions
 
 export default slice.reducer

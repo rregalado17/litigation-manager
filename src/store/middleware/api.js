@@ -23,7 +23,6 @@ const api = ({dispatch}) => next => async action => {
         dispatch(actions.apiCallFailed(error.message))
         if (onError) dispatch({ type: onError, payload: error.message });
     }
-
 }
 
 export default api;

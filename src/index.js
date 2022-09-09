@@ -21,10 +21,10 @@ store.subscribe(() => {
   console.log('change')
 })
 
-store.dispatch(fetchLawyers());
+// store.dispatch(fetchLawyers());
 // store.dispatch(fetchLitigations());
 
-// store.dispatch(addLawyer({lawyer: {first_name: "Ben", last_name: "Carmine"}}));
+// store.dispatch(addLawyer({lawyer: {first_name: "Matt", last_name: "Hoffman"}}));
 store.dispatch(addLitigation( {litigations: {lawyer_id: 2, caption: "USA v. China", court: 'SDNY', status: 'Active'}}));
 
 

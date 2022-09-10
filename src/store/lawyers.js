@@ -33,6 +33,10 @@ const slice = createSlice({
             //     resolved: false
             // })
             lawyers.list.push(action.payload)
+        },
+        lawyerUpdated: (lawyers, action) => {
+            const index = lawyers.list.findIndex(lawyer => lawyer.id === lawyer.index)
+            lawyers.list[index].first_name = 'n/a'
         }
     }
 })
@@ -75,6 +79,7 @@ export const {
     // likeLawyer,
     lawyersRequested,
     lawyersRequestedFailed,
+    lawyerUpdated,
     lawyerAdded } = slice.actions
 
 export default slice.reducer

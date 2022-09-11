@@ -35,8 +35,13 @@ const slice = createSlice({
             lawyers.list.push(action.payload)
         },
         lawyerUpdated: (lawyers, action) => {
-            const index = lawyers.list.findIndex(lawyer => lawyer.id === lawyer.index)
-            lawyers.list[index].first_name = 'n/a'
+            const index = lawyers.list.findIndex(lawyer => lawyer.id === action.payload.id)
+            lawyers.list[index].first_name = 'Jon'
+        },
+        lawyerAssignedToLit: (lawyers, action ) => {
+            const { id: lawyerId, litId} = action.payload;
+            const index = lawyers.list.findIndex(lawyer => lawyer.id === action.payload.id)
+            lawyers.list[index].lititgations = litId;
         }
     }
 })
@@ -60,10 +65,25 @@ export const fetchLawyers = () => (dispatch, getState) => {
 export const addLawyer = lawyer => apiLawyersCall({
     url: '/lawyers',
     method: 'post',
-    data: lawyer,
+    data: {first_name: 'n/a'},
     onSuccess: lawyerAdded.type
 })
 
+export const updateLawyer = id => apiLawyersCall({
+    url: '/lawyers/' + id,
+    method: 'patch',
+    data: { first_name: id},
+    onSuccess: lawyerUpdated.type,
+})
+
+// export const assignLitToLawyer = (lawyerId, litigationId) => apiLawyersCall(
+//     {
+//         url: '/lawyers/' + lawyerId,
+//         method: 'patch',
+//         data: {litigationId},
+//         onSuccess: litAssignedToLawyer.type
+//     }
+// )
 
 
 

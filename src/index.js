@@ -21,7 +21,7 @@ store.subscribe(() => {
 })
 
 store.dispatch(fetchLawyers());
-// store.dispatch(fetchLitigations());
+store.dispatch(fetchLitigations());
 // setTimeout(() => store.dispatch(updateLawyer(1), 2000))
 // store.dispatch(addLawyer({lawyer: {first_name: "Matt", last_name: "Hoffman"}}));
 // store.dispatch(addLitigation( {litigations: {lawyer_id: 2, caption: "USA v. China", court: 'SDNY', status: 'Active'}}));

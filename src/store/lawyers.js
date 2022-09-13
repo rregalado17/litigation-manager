@@ -88,10 +88,10 @@ export const updateLawyer = id => apiLawyersCall({
 
 
 
-// export const getAllLawyers = createSelector(
-//     state => state.lawyer.lawyers,
-//     lawyer => lawyer.lawyers
-// )
+export const getAllLawyers = createSelector(
+    state => state.lawyer.lawyers,
+    lawyer => lawyer.lawyers
+)
 
 
 export const { 

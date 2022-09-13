@@ -17,8 +17,8 @@ export function subscribe(listener) {
 
 export const store = configureStore (
     {reducer: {
-        lawyer: lawyerReducer,
-        litigation: litigationReducer,
+        // lawyer: lawyerReducer,
+        // litigation: litigationReducer,
         lawyers: lawyersRecieved,
         litigations: litigationsRecieved
     },
@@ -29,4 +29,3 @@ export const store = configureStore (
     ]},
     devToolsEnhancer({ trace: true})
 )
-

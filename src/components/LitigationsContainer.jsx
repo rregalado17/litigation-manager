@@ -1,5 +1,5 @@
 import React from 'react'
-import Litigation from '../components/Litigation'
+import Litigation from './Litigation'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 

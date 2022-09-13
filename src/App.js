@@ -13,24 +13,23 @@ import Litigation from './components/Litigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import LawyerInput  from './components/LawyerInput';
-import { fetchLawyers } from './actions/fetchLawyers';
-import { fetchLitigations } from './actions/fetchLitigations';
-import { getAllLawyers } from './reducers/lawyerSlice';
+import { fetchLawyers } from './store/lawyers';
+import { fetchLitigations } from './store/litigations';
+
+
 
 
 function App() {
 
-  const { store, isLoading} = useSelector((store) => store.lawyer)
+  const { store, isLoading} = useSelector((store) => store.lawyers)
   const dispatch = useDispatch();
+  const lawyersArray = useSelector((store) => store.lawyers.list)
+  const litigationsArray = useSelector((store) => store.litigations.array)
 
-  // console.log(getAllLawyers)
-  const lawyersArray = useSelector((store) => store.lawyer.lawyers)
-  const litigationsArray = useSelector((store) => store.litigation.litigations)
-
-  // useEffect(() => {
-  //   dispatch(fetchLawyers());
-  //   dispatch(fetchLitigations())
-  // }, [])
+  useEffect(() => {
+    dispatch(fetchLawyers());
+    dispatch(fetchLitigations())
+  }, [])
 
   if(isLoading) {
     return <div>

@@ -1,7 +1,7 @@
-import * as actions from './actionTypes'
+// import * as actions from './actionTypes'
 // import { createAsyncThunk } from '@reduxjs/toolkit'
 
-const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
+// const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
 
 // export const addLawyer = createAsyncThunk('lawyer/addLawyer', () => {
 //     return fetch(lawyersURL)
@@ -9,17 +9,17 @@ const lawyersURL = 'http://localhost:3000/api/v1/lawyers'
 //     .then(lawyer => dispatch({type: 'ADD_LAWYER', payload: lawyer}))
 // })
 
-export function addLawyer (data) {
-    return (dispatch) => {
-        fetch('http://localhost:3000/api/v1/lawyers', {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify(data) 
-        })
-        .then(res => res.json())
-        .then(lawyer => dispatch({type: actions.ADD_LAWYER, payload: lawyer}))
-    }
-}
+// export function addLawyer (data) {
+//     return (dispatch) => {
+//         fetch('http://localhost:3000/api/v1/lawyers', {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Accept': 'application/json'
+//             },
+//             method: 'POST',
+//             body: JSON.stringify(data) 
+//         })
+//         .then(res => res.json())
+//         .then(lawyer => dispatch({type: actions.ADD_LAWYER, payload: lawyer}))
+//     }
+// }

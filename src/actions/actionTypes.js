@@ -1,3 +1,0 @@
-export const ADD_LAWYER = 'ADD_LAWYER'
-export const FETCH_LAWYERS = 'FETCH_LAWYERS'
-export const FETCH_LITIGATIONS = "FETCH_LITIGATIONS"

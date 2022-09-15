@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 
-const LawyersContainer = () => {
+const LawyersContainer = ( {lawyersArray} ) => {
 
-  const lawyersArray = useSelector((store) => store.lawyers.list)
+  // const lawyersArray = useSelector((store) => store.lawyers.list)
 
   return(
     <div>

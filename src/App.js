@@ -16,12 +16,8 @@ import LawyerInput  from './components/LawyerInput';
 import { fetchLawyers } from './store/lawyers';
 import { fetchLitigations } from './store/litigations';
 
-
-
-
 function App() {
 
-  const { store, isLoading} = useSelector((store) => store.lawyers)
   const dispatch = useDispatch();
   const lawyersArray = useSelector((store) => store.lawyers.list)
   const litigationsArray = useSelector((store) => store.litigations.array)
@@ -29,13 +25,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchLawyers());
     dispatch(fetchLitigations())
-  }, [])
-
-  if(isLoading) {
-    return <div>
-      <h1>Loading...</h1>
-    </div>
-  }
+    }, [])
 
   return (
     <main>

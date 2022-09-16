@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 // import { addLawyer } from '../actions/addLawyer'
 import {lawyerAdded}  from '../store/lawyers'
+import {addLawyer}  from '../store/lawyers'
+
 
 class LawyerInput extends React.Component {
 
@@ -15,7 +17,8 @@ class LawyerInput extends React.Component {
 
 handleSubmit = (event) => {
     event.preventDefault()
-    this.props.lawyerAdded(this.state)
+    // this.props.lawyerAdded(this.state)
+    this.props.addLawyer(this.state)
     this.setState({
         first_name: '', last_name: ''
     })
@@ -36,7 +39,7 @@ render() {
     )
 }
 }
-export default connect(null, {lawyerAdded})(LawyerInput)
+export default connect(null, {lawyerAdded, addLawyer})(LawyerInput)
 // export default (LawyerInput)
     // const handleSubmit = (event) => {
     //   event.preventDefault()

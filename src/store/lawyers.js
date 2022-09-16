@@ -65,7 +65,7 @@ export const fetchLawyers = () => (dispatch, getState) => {
 export const addLawyer = lawyer => apiLawyersCall({
     url: '/lawyers',
     method: 'post',
-    data: {first_name: 'n/a'},
+    data: lawyer,
     onSuccess: lawyerAdded.type
 })
 

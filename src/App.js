@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import LawyerInput  from './components/LawyerInput';
 import { fetchLawyers } from './store/lawyers';
 import { fetchLitigations } from './store/litigations';
+import LitigationInput from './components/LitigationInput';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
         <Route />
         <Route path='/litigations/' element={<LitigationsContainer litigationsArray={litigationsArray}/>} />
           <Route path="/litigations/:id" element={<Litigation litigationsArray={litigationsArray}/>} />
+          <Route path="/litigations/new" element={<LitigationInput />} />
         <Route /> 
         <Route 
           path='*'

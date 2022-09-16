@@ -1,10 +1,12 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useHref, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 // import { likeLawyer } from '../reducers/lawyerSlice'
 
 const Lawyer = ({ lawyersArray}) => {
   
+  const url = "http://localhost:3001/litigations/new"
+
   let { id } = useParams();
   function getLawyerId(id) {
     return lawyersArray && lawyersArray.length && lawyersArray.find(
@@ -12,6 +14,7 @@ const Lawyer = ({ lawyersArray}) => {
     )
   }
   let lawyerProfile = getLawyerId(id);
+
 
   return (
     <div>
@@ -24,12 +27,12 @@ const Lawyer = ({ lawyersArray}) => {
           })}</h3>
       
       <h4>Profile: {lawyerProfile ? lawyerProfile.profile : null}</h4>
-
-    <button onClick={'/litigations/new'}>
+    <Link to={`/litigations/new`}>
+    <button onClick={useHref(url)}>
       Add Litigation
     </button>
-    {/*      
-      <button
+    </Link>
+      {/* <button
         onClick={() => dispatch(likeLawyer(id))}>
         Like!
       </button> */}

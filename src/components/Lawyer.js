@@ -20,7 +20,6 @@ const Lawyer = ({ lawyersArray}) => {
     <div>
       <h2>{lawyerProfile ? lawyerProfile.first_name : null} {lawyerProfile ? lawyerProfile.last_name : null}</h2>
       <h3>Notable Matters: {lawyersArray && lawyersArray.length && lawyerProfile.litigations.map((litigation) => {
-    
       return <li key={litigation.id}><Link to={`/litigations/${litigation.id}`}>
               {litigation.caption}</Link>
             </li>

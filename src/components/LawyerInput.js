@@ -17,7 +17,6 @@ class LawyerInput extends React.Component {
 
 handleSubmit = (event) => {
     event.preventDefault()
-    // this.props.lawyerAdded(this.state)
     this.props.addLawyer(this.state)
     this.setState({
         first_name: '', last_name: ''
@@ -40,57 +39,3 @@ render() {
 }
 }
 export default connect(null, {lawyerAdded, addLawyer})(LawyerInput)
-// export default (LawyerInput)
-    // const handleSubmit = (event) => {
-    //   event.preventDefault()
-    //   this.props.addLawyer(this.state)
-    //   this.setState({
-    //     first_name: '', last_name: ''
-    //   })
-    //   console.log(event)
-    // }
-  
-  // return (
-  //   <div>
-  //     <form onSubmit={handleSubmit}>
-  //       <label>Submit Your New Lawyer Form</label>
-  //       <p><input type='text' placeholder='First Name' value={firstName} name="first_name" onChange={e => setFirstName(e.target.value)} /></p>
-  //       <p><input type='text' placeholder='Last Name' value={lastName} name="last_name" onChange={e => setLastName(e.target.value)} /></p>
-  //       <p><input type='submit' /></p>
-  //     </form>
-  //   </div>
-  // )
-  // }
-
-
-
-
-
-// const lawyersArray = useSelector((store) => store.lawyer.lawyers)
-
-
-
-// export default (LawyerInput)
-
-//const LawyerInput = ({ lawyersArray}) =>  {
-
-  //   const [firstName, setFirstName] = useState('');
-  //   const [lastName, setLastName] = useState('');
-    
-  //   const handleChange = (e) => {
-  //       this.setState({
-  //         [e.target.name]: e.target.value
-  //       })
-  //       console.log(e)
-  //     }
-  
-  //   const handleSubmit = e => {
-  //     e.preventDefault();
-  //     const data = {
-  //       first_name: firstName,
-  //       last_name: lastName 
-  //     }
-     
-  //     // addLawyer(data)
-  //     console.log(data)
-  //   }

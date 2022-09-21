@@ -1,6 +1,8 @@
 import React, { Component, useState } from 'react'
+import { addLitigation, litigationAdded } from '../store/litigations'
+import { connect } from 'react-redux'
 
-export default class LitigationInput extends Component {
+class LitigationInput extends Component {
   
   state = {
     caption: '',
@@ -17,7 +19,7 @@ export default class LitigationInput extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.litAdded(this.state)
+    this.props.addLitigation(this.state)
     this.setState({
         caption: '',
         court: '',
@@ -25,8 +27,8 @@ export default class LitigationInput extends Component {
         lawyer: ''
     })
   }
-  
-    render() {
+
+  render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -36,23 +38,34 @@ export default class LitigationInput extends Component {
                 value={this.state.caption} name="caption" 
                 onChange={this.handleChange}>
             </input></p>
-            <p><input type='text' 
+            <p>Case Caption: <input type='text' 
                 placeholder='Court' 
                 value={this.state.caption} name="caption" 
                 onChange={this.handleChange}>
             </input></p>
-            <p><input type='text' 
+            <p>Judge: <input type='text' 
                 placeholder='Judge' 
                 value={this.state.caption} name="caption" 
                 onChange={this.handleChange}>
             </input></p>
-            <p><input type='Lawyer' 
+            <p>Lawyer: <input type='text' 
                 placeholder='Caption' 
                 value={this.state.caption} name="caption" 
                 onChange={this.handleChange}>
             </input></p>
+            <select 
+              name='lawyer_id'
+              value={this.state.value} onChange={this.handleChange}>
+                
+              <option value="mango">Mango</option>
+            </select>
+            <p><input type='submit'></input></p>
+
+
         </form>
       </div>
     )
   }
 }
+
+export default connect(null, {litigationAdded, addLitigation})(LitigationInput)

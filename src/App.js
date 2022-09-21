@@ -39,7 +39,7 @@ function App() {
         <Route />
         <Route path='/litigations/' element={<LitigationsContainer litigationsArray={litigationsArray}/>} />
           <Route path="/litigations/:id" element={<Litigation litigationsArray={litigationsArray}/>} />
-          <Route path="/litigations/new" element={<LitigationInput />} />
+          <Route path="/litigations/new" element={<LitigationInput lawyersArray={lawyersArray}/>} />
         <Route /> 
         <Route 
           path='*'

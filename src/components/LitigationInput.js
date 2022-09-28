@@ -1,15 +1,19 @@
 import React, { Component, useState } from 'react'
 import { addLitigation, litigationAdded } from '../store/litigations'
 import { connect } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 class LitigationInput extends Component {
-  
+
   state = {
     caption: '',
     court: '',
-    judge: '',
-    lawyer: ''
+    judge: "",
+    lawyer_id: [],
   }
+
+  // lawyersArray = this.lawyersArray
+
 
   handleChange = (event) => {
     this.setState({
@@ -24,7 +28,7 @@ class LitigationInput extends Component {
         caption: '',
         court: '',
         judge: '',
-        lawyer: ''
+        lawyer_id: [],
     })
   }
 
@@ -38,28 +42,26 @@ class LitigationInput extends Component {
                 value={this.state.caption} name="caption" 
                 onChange={this.handleChange}>
             </input></p>
-            <p>Case Caption: <input type='text' 
+            <p>Court: <input type='text' 
                 placeholder='Court' 
-                value={this.state.caption} name="caption" 
+                value={this.state.court} name="court" 
                 onChange={this.handleChange}>
             </input></p>
             <p>Judge: <input type='text' 
                 placeholder='Judge' 
-                value={this.state.caption} name="caption" 
+                value={this.state.judge} name="judge" 
                 onChange={this.handleChange}>
             </input></p>
-            <p>Lawyer: <input type='text' 
-                placeholder='Caption' 
-                value={this.state.caption} name="caption" 
+            <p>Lawyer: <input type='number' 
+                placeholder='lawyer' 
+                value={this.state.lawyer_id} name="lawyer_id" 
                 onChange={this.handleChange}>
             </input></p>
-            <select 
-              name='lawyer_id'
-              value={this.state.value} onChange={this.handleChange}>
-                
-              <option value="mango">Mango</option>
-            </select>
-            <p><input type='submit'></input></p>
+            {/* <select value={this.state.value} onChange={this.handleChange}>
+              <option key={lawyer_id} value={first_name}>{first_name} {last_name}</option>
+            </select> */}
+            {/* {console.log(this.lawyersArray)} */}
+            <p><input type='submit'></input></p> 
 
 
         </form>

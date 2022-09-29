@@ -8,8 +8,9 @@ class LitigationInput extends Component {
   state = {
     caption: '',
     court: '',
-    judge: "",
+    judge: '',
     lawyer_id: [],
+    status: ''
   }
 
   // lawyersArray = this.lawyersArray
@@ -29,6 +30,7 @@ class LitigationInput extends Component {
         court: '',
         judge: '',
         lawyer_id: [],
+        status: ''
     })
   }
 
@@ -57,9 +59,11 @@ class LitigationInput extends Component {
                 value={this.state.lawyer_id} name="lawyer_id" 
                 onChange={this.handleChange}>
             </input></p>
-            {/* <select value={this.state.value} onChange={this.handleChange}>
-              <option key={lawyer_id} value={first_name}>{first_name} {last_name}</option>
-            </select> */}
+            <p>Status: <input type='text' 
+                placeholder='status' 
+                value={this.state.status} name="status" 
+                onChange={this.handleChange}>
+            </input></p>
             {/* {console.log(this.lawyersArray)} */}
             <p><input type='submit'></input></p> 
 

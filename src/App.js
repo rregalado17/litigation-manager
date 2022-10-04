@@ -16,6 +16,7 @@ import LawyerInput  from './components/LawyerInput';
 import { fetchLawyers } from './store/lawyers';
 import { fetchLitigations } from './store/litigations';
 import LitigationInput from './components/LitigationInput';
+import EditLitigation from './components/EditLitigation';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
         <Route path='/litigations/' element={<LitigationsContainer litigationsArray={litigationsArray}/>} />
           <Route path="/litigations/:id" element={<Litigation litigationsArray={litigationsArray}/>} />
           <Route path="/litigations/new" element={<LitigationInput lawyersArray={lawyersArray}/>} />
+          <Route path="/litigations/edit" element={<EditLitigation />} />
         <Route /> 
         <Route 
           path='*'

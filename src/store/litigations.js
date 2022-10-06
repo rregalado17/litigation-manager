@@ -24,12 +24,11 @@ const slice = createSlice({
             
         },
         litigationAdded: (litigations, action) => {
-            litigations.array.push({
-                lawyer_id: 2, 
-                caption: "USA v. China", 
-                court: 'SDNY', 
-                status: 'Active'
-            })
+            litigations.array.push(action.payload)
+            
+        },
+        litigationUpdated: (litigations, action) => {
+            litigations.array.push(action.payload)
             
         }
     }
@@ -63,10 +62,18 @@ export const addLitigation = litigation => apiLitigationsCall({
     onSuccess: litigationAdded.type
 })
 
+export const updateLitigation = litigation => apiLitigationsCall({
+    url: '/litigations',
+    method: 'patch',
+    data: litigation,
+    onSuccess: litigationAdded.type
+})
+
 export const { 
     litigationsRequested,
     litigationsRequestedFailed,
     litigationsRecieved, 
-    litigationAdded } = slice.actions
+    litigationAdded,
+    litigationUpdated } = slice.actions
 
 export default slice.reducer

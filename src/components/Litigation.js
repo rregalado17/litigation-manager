@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import UpdateLitigation from './UpdateLitigation';
 
 const Litigation = ( { litigationsArray } ) => {
 
@@ -23,7 +24,8 @@ const Litigation = ( { litigationsArray } ) => {
       <p>Court: {litProfile ? litProfile.court : null}</p>
       <p>Opposing Counsel: {litProfile ? litProfile.opposing_party : null}</p>
       <p>Status: {litProfile ? litProfile.status : null}</p>
-      <p><Link to={`/litigations/edit`}>Edit Litigation</Link></p>
+      <p><Link to={`/litigations/${id}/edit`}>Edit Litigation</Link></p>
+      <UpdateLitigation litigations={litigationsArray}/>
       <Link to={`/litigations`}>Delete Litigation</Link>
     </div>
     )

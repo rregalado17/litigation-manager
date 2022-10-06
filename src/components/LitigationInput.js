@@ -13,9 +13,6 @@ class LitigationInput extends Component {
     status: ''
   }
 
-  // lawyersArray = this.lawyersArray
-
-
   handleChange = (event) => {
     this.setState({
         [event.target.name]: event.target.value
@@ -59,15 +56,15 @@ class LitigationInput extends Component {
                 value={this.state.lawyer_id} name="lawyer_id" 
                 onChange={this.handleChange}>
             </input></p>
-            {/* <p>Status: <input type='text' 
+            <p>Status: <input type='text' 
                 placeholder='status' 
                 value={this.state.status} name="status" 
                 onChange={this.handleChange}>
-            </input></p> */}
-            <select>
+            </input></p>
+            {/* <select>
               <option value="Active" name="status" onChange={this.handleChange}>Active</option>
               <option value="Concluded" name="status" onChange={this.handleChange}>Concluded</option>
-            </select>
+            </select> */}
             {/* {console.log(this.lawyersArray)} */}
             <p><input type='submit'></input></p> 
 

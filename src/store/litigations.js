@@ -28,7 +28,16 @@ const slice = createSlice({
             
         },
         litigationUpdated: (litigations, action) => {
+            // litigations.array.push({
+            //     id: action.payload.id
+            // })
             litigations.array.push(action.payload)
+        // addLawyer: (lawyers, action) => {
+        //     lawyers.push({
+        //         id: lastId++,
+        //         name: action.payload.name
+        //     })
+        // } 
             
         }
     }
@@ -50,20 +59,15 @@ export const fetchLitigations = () => (dispatch, getState ) => {
     )
 }
 
-// export const fetchLitigations = () =>  apiLitigationsCall({
-//     url: '/litigations',
-//     onSuccess: litigationsRecieved.type
-// })
-
 export const addLitigation = litigation => apiLitigationsCall({
     url: '/litigations',
     method: 'post',
     data: litigation,
     onSuccess: litigationAdded.type
-})
+})  
 
-export const updateLitigation = litigation => apiLitigationsCall({
-    url: '/litigations',
+export const updateLitigation = litigation  => apiLitigationsCall({
+    url: '/litigations/' + litigation.id,
     method: 'patch',
     data: litigation,
     onSuccess: litigationAdded.type
@@ -77,3 +81,16 @@ export const {
     litigationUpdated } = slice.actions
 
 export default slice.reducer
+
+
+
+
+
+
+
+
+
+// export const fetchLitigations = () =>  apiLitigationsCall({
+//     url: '/litigations',
+//     onSuccess: litigationsRecieved.type
+// })

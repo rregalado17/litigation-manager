@@ -25,7 +25,7 @@ const Litigation = ( { litigationsArray } ) => {
       <p>Opposing Counsel: {litProfile ? litProfile.opposing_party : null}</p>
       <p>Status: {litProfile ? litProfile.status : null}</p>
       <p><Link to={`/litigations/${id}/edit`}>Edit Litigation</Link></p>
-      <UpdateLitigation litigations={litigationsArray}/>
+      <UpdateLitigation litigations={litProfile}/>
       <Link to={`/litigations`}>Delete Litigation</Link>
     </div>
     )

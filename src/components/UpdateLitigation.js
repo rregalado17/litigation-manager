@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 class UpdateLitigation extends Component {
 
   state = {
-    caption: '',
-    court: '',
-    judge: '',
-    lawyer_id: [],
-    status: ''
+    caption: this.props.litigations.caption,
+    court: this.props.litigations.court,
+    judge: this.props.litigations.judge,
+    lawyer_id: this.props.litigations.id,
+    status: this.props.litigations.status
   }
 
   handleChange = (event) => {
@@ -20,7 +20,11 @@ class UpdateLitigation extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    let litigation = {...this.state, id: this.props.litigation.id}
+    let litigation = {
+      ...this.state, 
+      id: this.props.litigations.id
+    }
+    console.log(litigation)
     this.props.updateLitigation(litigation)
     this.setState({
         caption: '',

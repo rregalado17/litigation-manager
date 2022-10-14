@@ -2,6 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import UpdateLitigation from './UpdateLitigation';
+import { deleteLitigation, litigationDeleted } from '../store/litigations';
+import { connect } from 'react-redux'
 
 const Litigation = ( { litigationsArray } ) => {
 
@@ -17,6 +19,11 @@ const Litigation = ( { litigationsArray } ) => {
 
   let litProfile = getLitId(id);
 
+  const handleDelete = (litProfile) => {
+    deleteLitigation(litProfile.id)
+    // console.log(deleteLitigation(litProfile.id))
+}
+
   return (
     <div>
       <h2>{litProfile ? litProfile.caption : null}</h2>
@@ -24,11 +31,14 @@ const Litigation = ( { litigationsArray } ) => {
       <p>Court: {litProfile ? litProfile.court : null}</p>
       <p>Opposing Counsel: {litProfile ? litProfile.opposing_party : null}</p>
       <p>Status: {litProfile ? litProfile.status : null}</p>
+      <p>Judge: {litProfile ? litProfile.judge : null}</p>
       <p><Link to={`/litigations/${id}/edit`}>Edit Litigation</Link></p>
       <UpdateLitigation litigations={litProfile}/>
-      <Link to={`/litigations`}>Delete Litigation</Link>
+      {/* <Link to={`/litigations`}>Delete Litigation</Link> */}
+
+      <button onClick={() => handleDelete(litProfile.id)}>Delete</button>
     </div>
     )
   }
 
-  export default Litigation;
+  export default connect(null, {litigationDeleted, deleteLitigation})(Litigation);

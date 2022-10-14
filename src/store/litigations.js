@@ -28,18 +28,11 @@ const slice = createSlice({
             
         },
         litigationUpdated: (litigations, action) => {
-            // litigations.array.push({
-            //     id: action.payload.id
-            // })
             litigations.array.push(action.payload)
-        // addLawyer: (lawyers, action) => {
-        //     lawyers.push({
-        //         id: lastId++,
-        //         name: action.payload.name
-        //     })
-        // } 
-            
-        }
+        },
+        litigationDeleted: (litigations, action) => {
+            litigations.array.push(action.payload)
+        },
     }
 })
 
@@ -70,7 +63,14 @@ export const updateLitigation = litigation  => apiLitigationsCall({
     url: '/litigations/' + litigation.id,
     method: 'patch',
     data: litigation,
-    onSuccess: litigationAdded.type
+    onSuccess: litigationUpdated.type
+})
+
+export const deleteLitigation = litProfile => apiLitigationsCall({
+    url: '/litigation/' + litProfile,
+    method: 'delete',
+    data: litProfile,
+    onSuccess: litigationDeleted.type
 })
 
 export const { 
@@ -78,7 +78,8 @@ export const {
     litigationsRequestedFailed,
     litigationsRecieved, 
     litigationAdded,
-    litigationUpdated } = slice.actions
+    litigationUpdated,
+    litigationDeleted } = slice.actions
 
 export default slice.reducer
 

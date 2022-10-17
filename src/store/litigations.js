@@ -29,9 +29,15 @@ const slice = createSlice({
         },
         litigationUpdated: (litigations, action) => {
             litigations.array.push(action.payload)
+            console.log(action.payload)
+            console.log("2.1")
+
         },
         litigationDeleted: (litigations, action) => {
-            litigations.array.push(action.payload)
+            console.log(action.payload)
+            const { id } = action.payload
+            console.log("11")
+            return litigations.array = litigations.array.filter(litigation => litigation.id !== id)
         },
     }
 })
@@ -59,17 +65,17 @@ export const addLitigation = litigation => apiLitigationsCall({
     onSuccess: litigationAdded.type
 })  
 
-export const updateLitigation = litigation  => apiLitigationsCall({
-    url: '/litigations/' + litigation.id,
+export const updateLitigation = litigations  => apiLitigationsCall({
+    url: '/litigations/' + litigations.id,
     method: 'patch',
-    data: litigation,
+    data: litigations,
     onSuccess: litigationUpdated.type
 })
 
-export const deleteLitigation = litProfile => apiLitigationsCall({
-    url: '/litigation/' + litProfile,
+export const deleteLitigation = litigations => apiLitigationsCall({
+    url: '/litigations/' + litigations.id,
     method: 'delete',
-    data: litProfile,
+    data: litigations,
     onSuccess: litigationDeleted.type
 })
 

@@ -25,6 +25,8 @@ class UpdateLitigation extends Component {
       id: this.props.litigations.id
     }
     console.log(litigation)
+    console.log(updateLitigation(litigation))
+    console.log("1.1")
     this.props.updateLitigation(litigation)
     this.setState({
         caption: '',
@@ -50,6 +52,5 @@ class UpdateLitigation extends Component {
       </div>
     )
   }
-
 }
 export default connect(null, {litigationUpdated, updateLitigation})(UpdateLitigation)

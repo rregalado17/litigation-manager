@@ -2,12 +2,10 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import UpdateLitigation from './UpdateLitigation';
+import { useSelector, useDispatch, connect } from 'react-redux'
 import { deleteLitigation, litigationDeleted } from '../store/litigations';
-import { connect } from 'react-redux'
 
 const Litigation = ( { litigationsArray } ) => {
-
-  const url = "http://localhost:3001/litigations/edit"
 
   let { id } = useParams();
   
@@ -17,15 +15,19 @@ const Litigation = ( { litigationsArray } ) => {
     )
   }
 
+  const dispatch = useDispatch();
+
   let litProfile = getLitId(id);
 
   const handleDelete = (litProfile) => {
-    deleteLitigation(litProfile.id)
-    // console.log(deleteLitigation(litProfile.id))
-}
+    console.log(litProfile)
+    console.log(deleteLitigation(litProfile))
+    dispatch(deleteLitigation(litProfile))
+  }
 
   return (
     <div>
+      <button onClick={() => handleDelete(litProfile)}>Delete</button>
       <h2>{litProfile ? litProfile.caption : null}</h2>
       <p>Managing Matter Attorney: {litProfile ? litProfile.lawyer.first_name : null} {litProfile ? litProfile.lawyer.last_name : null}</p>
       <p>Court: {litProfile ? litProfile.court : null}</p>
@@ -36,9 +38,8 @@ const Litigation = ( { litigationsArray } ) => {
       <UpdateLitigation litigations={litProfile}/>
       {/* <Link to={`/litigations`}>Delete Litigation</Link> */}
 
-      <button onClick={() => handleDelete(litProfile.id)}>Delete</button>
     </div>
     )
   }
 
-  export default connect(null, {litigationDeleted, deleteLitigation})(Litigation);
+  export default connect(null, {deleteLitigation, litigationDeleted})(Litigation)

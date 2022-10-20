@@ -1,11 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import UpdateLitigation from './UpdateLitigation';
-import { useSelector, useDispatch, connect } from 'react-redux'
+import { useDispatch, connect } from 'react-redux'
 import { deleteLitigation, litigationDeleted } from '../store/litigations';
+import { useState } from 'react';
 
 const Litigation = ( { litigationsArray } ) => {
+
+  const [toggleEdit, setEditMode ] = useState(false);
 
   let { id } = useParams();
   
@@ -20,24 +22,26 @@ const Litigation = ( { litigationsArray } ) => {
   let litProfile = getLitId(id);
 
   const handleDelete = (litProfile) => {
-    console.log(litProfile)
-    console.log(deleteLitigation(litProfile))
     dispatch(deleteLitigation(litProfile))
+  }
+
+  const handleClick = event => {
+    setEditMode(current => !current)
   }
 
   return (
     <div>
-      <button onClick={() => handleDelete(litProfile)}>Delete</button>
       <h2>{litProfile ? litProfile.caption : null}</h2>
       <p>Managing Matter Attorney: {litProfile ? litProfile.lawyer.first_name : null} {litProfile ? litProfile.lawyer.last_name : null}</p>
       <p>Court: {litProfile ? litProfile.court : null}</p>
       <p>Opposing Counsel: {litProfile ? litProfile.opposing_party : null}</p>
       <p>Status: {litProfile ? litProfile.status : null}</p>
       <p>Judge: {litProfile ? litProfile.judge : null}</p>
-      <p><Link to={`/litigations/${id}/edit`}>Edit Litigation</Link></p>
-      <UpdateLitigation litigations={litProfile}/>
-      {/* <Link to={`/litigations`}>Delete Litigation</Link> */}
-
+      <button onClick={() => handleClick(litProfile)}>Edit Profile</button>
+      {toggleEdit && (
+       <div><UpdateLitigation litigations={litProfile}/><br></br></div>
+      )}
+      <button onClick={() => handleDelete(litProfile)}>Delete</button>
     </div>
     )
   }

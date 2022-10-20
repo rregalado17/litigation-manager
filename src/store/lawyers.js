@@ -26,17 +26,10 @@ const slice = createSlice({
         //     console.log(action)
         // },
         lawyerAdded: (lawyers, action) => {
-            // lawyers.list.push({
-            //     id: ++lastId,
-            //     first_name: action.payload.first_name,
-            //     last_name: action.payload.last_name,
-            //     resolved: false
-            // })
             lawyers.list.push(action.payload)
         },
         lawyerUpdated: (lawyers, action) => {
-            const index = lawyers.list.findIndex(lawyer => lawyer.id === action.payload.id)
-            lawyers.list[index].first_name = 'Jon'
+            lawyers.list.push(action.payload)
         },
         lawyerAssignedToLit: (lawyers, action ) => {
             const { id: lawyerId, litId} = action.payload;
@@ -47,11 +40,9 @@ const slice = createSlice({
 })
 
 export const fetchLawyers = () => (dispatch, getState) => {
-    const { lastFetch } = getState().lawyers;
-
-    const diffInMinutes = moment().diff(moment(lastFetch), 'minutes')
-    if (diffInMinutes < 10) return;
-
+    // const { lastFetch } = getState().lawyers;
+    // const diffInMinutes = moment().diff(moment(lastFetch), 'minutes')
+    // if (diffInMinutes < 10) return;
     dispatch(
         apiLawyersCall({
             url: '/lawyers',
@@ -69,10 +60,10 @@ export const addLawyer = lawyer => apiLawyersCall({
     onSuccess: lawyerAdded.type
 })
 
-export const updateLawyer = id => apiLawyersCall({
-    url: '/lawyers/' + id,
+export const updateLawyer = lawyers => apiLawyersCall({
+    url: '/lawyers/' + lawyers.id,
     method: 'patch',
-    data: { first_name: id},
+    data: lawyers,
     onSuccess: lawyerUpdated.type,
 })
 
@@ -85,14 +76,10 @@ export const updateLawyer = id => apiLawyersCall({
 //     }
 // )
 
-
-
-
 export const getAllLawyers = createSelector(
     state => state.lawyer.lawyers,
     lawyer => lawyer.lawyers
 )
-
 
 export const { 
     lawyersRecieved, 

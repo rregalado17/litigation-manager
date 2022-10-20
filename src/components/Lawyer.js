@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHref, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
+import UpdateLawyer from './UpdateLawyer';
 // import { likeLawyer } from '../reducers/lawyerSlice'
 
 const Lawyer = ({ lawyersArray}) => {
+  
+  const [toggleEdit, setEditMode ] = useState(false) 
   
   const url = "http://localhost:3001/litigations/new"
 
@@ -15,6 +18,9 @@ const Lawyer = ({ lawyersArray}) => {
   }
   let lawyerProfile = getLawyerId(id);
 
+  const handleClick = event => {
+    setEditMode(current => !current )
+  }
 
   return (
     <div>
@@ -29,8 +35,13 @@ const Lawyer = ({ lawyersArray}) => {
     <Link to={`/litigations/new`}>
     <button onClick={useHref(url)}>
       Add Litigation
-    </button>
+    </button><br></br>
     </Link>
+
+    <button onClick={() =>handleClick(lawyerProfile)}>Edit Lawyer Profile</button>
+        {toggleEdit && (
+          <div><UpdateLawyer lawyers={lawyerProfile}/><br></br></div>
+        )}
       {/* <button
         onClick={() => dispatch(likeLawyer(id))}>
         Like!

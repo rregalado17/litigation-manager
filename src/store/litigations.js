@@ -43,11 +43,9 @@ const slice = createSlice({
 })
 
 export const fetchLitigations = () => (dispatch, getState ) => {
-    const { lastFetch } = getState().litigations;
-
-    const diffInMinutes = moment().diff(moment(lastFetch), 'minutes')
-    if (diffInMinutes < 10 ) return;
-
+    // const { lastFetch } = getState().litigations;
+    // const diffInMinutes = moment().diff(moment(lastFetch), 'minutes')
+    // if (diffInMinutes < 10 ) return;
     dispatch(
         apiLitigationsCall({
             url: '/litigations',
@@ -88,16 +86,3 @@ export const {
     litigationDeleted } = slice.actions
 
 export default slice.reducer
-
-
-
-
-
-
-
-
-
-// export const fetchLitigations = () =>  apiLitigationsCall({
-//     url: '/litigations',
-//     onSuccess: litigationsRecieved.type
-// })

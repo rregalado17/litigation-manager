@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react'
 import { connect } from 'react-redux'
- import { updateLitigation, litigationUpdated } from '../store/litigations'
+import { updateLitigation, litigationUpdated } from '../store/litigations'
 
 class UpdateLitigation extends Component {
 
@@ -8,7 +8,7 @@ class UpdateLitigation extends Component {
     caption: this.props.litigations.caption,
     court: this.props.litigations.court,
     judge: this.props.litigations.judge,
-    lawyer_id: this.props.litigations.id,
+    lawyer_id: this.props.litigations.lawyer_id,
     status: this.props.litigations.status
   }
 
@@ -42,11 +42,11 @@ class UpdateLitigation extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label><h3>Edit Litigation</h3></label>
-          <input type='text' placeholder="Caption" value={this.state.caption} name="caption" onChange={this.handleChange}/>
-          <input type='text' placeholder='Court' value={this.state.court} name="court" onChange={this.handleChange}/>
-          <input type='text' placeholder='Judge' value={this.state.judge} name="judge" onChange={this.handleChange}/>
-          <input type='text' placeholder='Lawyer' value={this.state.lawyer_id} name="lawyer_id" onChange={this.handleChange}/>
-          <input type='text' placeholder='Status' value={this.state.status} name="status" onChange={this.handleChange}/>
+          <input type='text' placeholder="Caption" value={this.state.caption} name="caption" onChange={this.handleChange}/><br></br>
+          <input type='text' placeholder='Court' value={this.state.court} name="court" onChange={this.handleChange}/><br></br>
+          <input type='text' placeholder='Judge' value={this.state.judge} name="judge" onChange={this.handleChange}/><br></br>
+          <input type='text' placeholder='Lawyer' value={this.state.lawyer_id} name="lawyer_id" onChange={this.handleChange}/><br></br>
+          <input type='text' placeholder='Status' value={this.state.status} name="status" onChange={this.handleChange}/><br></br>
           <input type="submit"/>
         </form>
       </div>

@@ -45,4 +45,4 @@ class UpdateLawyer extends Component {
     )
   }
 }
-export default connect(null, {lawyerUpdated, updateLawyer})(UpdateLawyer)
+export default connect(null, {lawyerUpdated, updateLawyer})(UpdateLawyer) 

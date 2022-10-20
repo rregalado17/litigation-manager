@@ -16,7 +16,6 @@ import LawyerInput  from './components/LawyerInput';
 import { fetchLawyers } from './store/lawyers';
 import { fetchLitigations } from './store/litigations';
 import LitigationInput from './components/LitigationInput';
-import UpdateLitigation from './components/UpdateLitigation';
 
 function App() {
 

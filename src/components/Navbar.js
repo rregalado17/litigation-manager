@@ -18,7 +18,7 @@ const Navbar = () => {
       className='link'
       to="/"
       exact style={link}
-      // activeStyle={{background: '#4b616c'}}
+      activeStyle={{background: '#4b616c'}}
     >
     Home
     </NavLink>
@@ -26,7 +26,7 @@ const Navbar = () => {
       className='link'
       to="/lawyers"
       exact style={link}
-      // activeStyle={{background: '#4b616c'}}
+      activeStyle={{background: '#4b616c'}}
       >
       Lawyers
     </NavLink>
@@ -34,7 +34,7 @@ const Navbar = () => {
       className='link'
       to="/litigations"
       exact style={link}
-      // activeStyle={{background: '#4b616c'}}
+      activeStyle={{background: '#4b616c'}}
       >
       Litigations 
     </NavLink>
@@ -42,7 +42,7 @@ const Navbar = () => {
       className='link'
       to="/lawyers/new"
       exact style={link}
-      // activeStyle={{background: '#4b616c'}}
+      activeStyle={{background: '#4b616c'}}
       >
       Add Lawyer Profile
     </NavLink>

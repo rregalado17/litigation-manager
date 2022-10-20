@@ -1,10 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {  useSelector } from 'react-redux';
 
 const LawyersContainer = ( {lawyersArray} ) => {
-
-  // const lawyersArray = useSelector((store) => store.lawyers.list)
 
   return(
     <div>
@@ -21,7 +18,6 @@ const LawyersContainer = ( {lawyersArray} ) => {
           }
         )
       }
-  {console.log({lawyersArray})}
   </div>
   )
 }

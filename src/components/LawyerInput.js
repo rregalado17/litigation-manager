@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
-// import { addLawyer } from '../actions/addLawyer'
 import {lawyerAdded}  from '../store/lawyers'
 import {addLawyer}  from '../store/lawyers'
 

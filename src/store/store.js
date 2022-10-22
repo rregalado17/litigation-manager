@@ -6,7 +6,6 @@ import api from './middleware/api'
 import apiLitigations from "./middleware/apiLitigations";
 import thunk from "redux-thunk" 
 
-
 let listeners = []
 
 export function subscribe(listener) {

@@ -1,9 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import UpdateLitigation from './UpdateLitigation';
-import { useDispatch, connect } from 'react-redux'
+import { useDispatch, connect, useSelector } from 'react-redux'
 import { deleteLitigation, litigationDeleted } from '../store/litigations';
 import { useState } from 'react';
+import EditLitigation from './EditLitigation';
+import { Button } from 'react-bootstrap';
+
 
 const Litigation = ( { litigationsArray } ) => {
 
@@ -11,6 +14,8 @@ const Litigation = ( { litigationsArray } ) => {
 
   let { id } = useParams();
   
+  const lawyersId = useSelector((store) => store.lawyers.list)
+
   function getLitId(id) {
     return litigationsArray && litigationsArray.length && litigationsArray.find(
       (litigation) => String(litigation.id) === id
@@ -37,11 +42,18 @@ const Litigation = ( { litigationsArray } ) => {
       <p>Opposing Counsel: {litProfile ? litProfile.opposing_party : null}</p>
       <p>Status: {litProfile ? litProfile.status : null}</p>
       <p>Judge: {litProfile ? litProfile.judge : null}</p>
-      <button onClick={() => handleClick(litProfile)}>Edit Profile</button>
+      <p>Date of Complaint: {litProfile ? litProfile.complaint_date: null}</p>
+      <p>Areas of Law: {litProfile ? litProfile.legal_areas : null}</p>
+      <p>Governing Law: {litProfile ? litProfile.governing_law : null}</p>
+      <p>Industry: {litProfile ? litProfile.industry : null}</p>
+      <p>Claims: {litProfile ? litProfile.claims : null}</p>
+      <p>Counterclaims: {litProfile ? litProfile.counterclaims : null}</p>
+      <Button onClick={() => handleClick(litProfile)}>Edit Profile</Button><p></p>
       {toggleEdit && (
-       <div><UpdateLitigation litigations={litProfile}/><br></br></div>
+      //  <div><UpdateLitigation lawyersId={lawyersId} litigations={litProfile}/><br></br></div>
+       <div><EditLitigation lawyers={lawyersId} litProfile={litProfile}/><br></br></div>
       )}
-      <button onClick={() => handleDelete(litProfile)}>Delete</button>
+      <Button onClick={() => handleDelete(litProfile)}>Delete</Button>
     </div>
     )
   }

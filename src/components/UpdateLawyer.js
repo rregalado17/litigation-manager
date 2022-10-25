@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { updateLawyer, lawyerUpdated } from '../store/lawyers'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { FormControl, FormGroup } from 'react-bootstrap';
+
 
 class UpdateLawyer extends Component {
 
@@ -48,16 +50,86 @@ class UpdateLawyer extends Component {
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
-        {/* <form onSubmit={this.handleSubmit}> */}
           <label><h3>Edit Litigation</h3></label><br></br>
-          <Form.Label>First Name: <br></br><input type='text' placeholder="First Name" value={this.state.first_name} name="first_name" onChange={this.handleChange}/></Form.Label><p></p>
+          <FormGroup controlId='formBasicText'>
+          <Form.Label>First Name: </Form.Label>
+          <FormControl 
+            type="text"
+            placeholder="First Name"
+            value={this.state.first_name}
+            name="first_name"
+            onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId='formBasicText'>
+          <Form.Label>Last Name: </Form.Label>
+          <FormControl 
+            type="text"
+            placeholder="Last Name"
+            value={this.state.last_name}
+            name="last_name"
+            onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId='formBasicText'>
+          <Form.Label>Profile: </Form.Label>
+          <FormControl 
+            type="text"
+            placeholder="Profile"
+            value={this.state.profile}
+            name="profile"
+            onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId='formBasicText'>
+          <Form.Label>Position: </Form.Label>
+          <FormControl 
+            type="text"
+            placeholder="Position"
+            value={this.state.position}
+            name="position"
+            onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId='formBasicText'>
+          <Form.Label>Law School: </Form.Label>
+          <FormControl 
+            type="text"
+            placeholder="Law School"
+            value={this.state.law_school}
+            name="law_school"
+            onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId='formBasicText'>
+          <Form.Label>Email: </Form.Label>
+          <FormControl 
+            type="text"
+            placeholder="Email"
+            value={this.state.email}
+            name="email"
+            onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup controlId='formBasicText'>
+          <Form.Label>Contact Number: </Form.Label>
+          <FormControl 
+            type="number"
+            placeholder="Phone"
+            value={this.state.phone}
+            name="phone"
+            onChange={this.handleChange}
+            />
+          </FormGroup>
+
+          {/* <Form.Label>First Name: <br></br><input type='text' placeholder="First Name" value={this.state.first_name} name="first_name" onChange={this.handleChange}/></Form.Label><p></p>
           <Form.Label>Last Name: <br></br><input type='text' placeholder='Last Name' value={this.state.last_name} name="last_name" onChange={this.handleChange}/></Form.Label><p></p>
           <Form.Label>Practice: <br></br><input type='text' placeholder='Practice' value={this.state.practice} name="practice" onChange={this.handleChange}/></Form.Label><p></p>
           <Form.Label>Profile: <br></br><input type='text' placeholder='Profile' value={this.state.profile} name="profile" onChange={this.handleChange}/></Form.Label><p></p>
           <Form.Label>Position: <br></br><input type='text' placeholder='Position' value={this.state.position} name="position" onChange={this.handleChange}/></Form.Label><p></p>
           <Form.Label>Law School: <br></br><input type='text' placeholder='Law School' value={this.state.law_school} name="law_school" onChange={this.handleChange}/></Form.Label><p></p>
           <Form.Label>Email: <br></br><input type='text' placeholder='Email' value={this.state.email} name="email" onChange={this.handleChange}/></Form.Label><p></p>
-          <Form.Label>Contact Number: <br></br><input type='text' placeholder='Contact Number' value={this.state.phone} name="phone" onChange={this.handleChange}/></Form.Label><p></p>
+          <Form.Label>Contact Number: <br></br><input type='text' placeholder='Contact Number' value={this.state.phone} name="phone" onChange={this.handleChange}/></Form.Label><p></p> */}
           <Button type="submit">Update</Button>
           {/* <input type="submit"/> */}
         {/* </form> */}

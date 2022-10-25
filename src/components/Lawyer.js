@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHref, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import UpdateLawyer from './UpdateLawyer';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -49,20 +49,14 @@ const Lawyer = ({ lawyersArray}) => {
          
       <p>Profile: {lawyerProfile ? lawyerProfile.profile : null}</p>
     <Link to={`/litigations/new`}>
-    <button onClick={useHref(url)}>
-      Add Litigation
-    </button><br></br>
-    </Link>
-
-
-    <button onClick={() =>handleClick(lawyerProfile)}>Edit Lawyer Profile</button>
+    <Button onClick={useHref(url)}>
+        Add Litigation
+    </Button><p></p>
+    </Link><br></br>
+    <Button onClick={() =>handleClick(lawyerProfile)}>Edit Profile</Button>
         {toggleEdit && (
           <div><UpdateLawyer lawyers={lawyerProfile}/><br></br></div>
         )}
-      {/* <button
-        onClick={() => dispatch(likeLawyer(id))}>
-        Like!
-      </button> */}
     </div>
   )
 }

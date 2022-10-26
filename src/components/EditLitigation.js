@@ -4,69 +4,79 @@ import { updateLitigation, litigationUpdated } from '../store/litigations'
 import Form from 'react-bootstrap/Form';
 import { Button, FormControl, FormGroup } from 'react-bootstrap';
 
-const EditLitigation = ( {lawyers, litProfile} ) => {
+const EditLitigation = ({lawyers, litProfile}) => {
 
-    // const dispatch = useDispatch()
-    const [caption, setCaption] = useState({
-        caption: litProfile.caption
+    const dispatch = useDispatch()
+
+    const [lit, setLit] = useState({
+        caption: '',
+        lawyer_id: '',
+        id: litProfile.id
     })
+    console.log(lit)
 
-    console.log(litProfile)
+    const handleChange = e => {
+        setLit({...lit, [e.target.name]: e.target.value})
+    }
+    console.log(lit)
 
     const handleSubmit = e => {
-        e.preventDefault()     
+        e.preventDefault()
+        console.log(litProfile.id)
+        // let lit = {
+        //     ...lit,
+        //     id: litProfile.id
+        // }
+        dispatch(updateLitigation(lit))
+
     }
-    // const handleChange = e => {
-    //     setCaption({...caption, [e.target.name]: e.target.value})
-    //   };
-    // const handleChange = (event) => {
-    //     setLitigation({...litigation, [event.target.name]: event.target.value})
-    // }
-    // const handleChange = (e) => {
-    //     setLitigation((litigation) => ({
-    //         ...litigation,
-    //         [e.target.name]: e.target.value
-    // }))
-    // }
-    //   handleSubmit = (event) => {
-    //     event.preventDefault()
-    //     let litigation = {
-    //       ...this.state, 
-    //       id: this.props.litigations.id
-    //     }
-    //     this.props.updateLitigation(litigation)
-    //     this.setState({
-    //         caption: '',
-    //         court: '',
-    //         judge: '',
-    //         lawyer_id: '',
-    //         status: '',
-    //         complaint_date: '',
-    //         legal_areas: '',
-    //         governing_law: '',
-    //         industry: '',
-    //         claims: '',
-    //         counterclaims: ''
-    //     })
-    return (
-    <>
+
+
+  return (
+    <div>
         <Form onSubmit={handleSubmit}>
-        <div>
+        <FormGroup>
+        <Form.Label>Caption: </Form.Label>
+        <FormControl
+            type='text'
+            name='caption'
+            defaultValue={litProfile.caption}
+            placeholder='Caption'
+            onChange={e => {
+                lit.caption = e.target.value;
+                // setLit(lit)
+            }}
+            >
+        </FormControl>
 
-            <Form.Label>Caption: </Form.Label>
-            <input
-                type="text" 
-                placeholder="Caption" 
-                value={caption}
-                name="caption" 
-                onChange={event => setCaption(event.target.value)}>
-            </input>
+        <FormControl
+            type='number'
+            name='lawyer_id'
+            defaultValue={litProfile.lawyer.id}
+            placeholder='LawyerId'
+            onChange={e => {
+                lit.lawyer_id = e.target.value;
+            }}
+            >
+        </FormControl>
 
-        </div>
-        </Form>       
-        
-    </>
-      )
+        <FormControl
+            type='text'
+            name='status'
+            defaultValue={litProfile.status}
+            placeholder='Status'
+            onChange={e => {
+                lit.status = e.target.value;
+            }}
+            >
+        </FormControl>
+
+        <button type='submit'>Update</button>
+        </FormGroup>
+        </Form>
+    </div>
+  )
 }
+
 
 export default connect(null, {litigationUpdated, updateLitigation})(EditLitigation)

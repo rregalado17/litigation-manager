@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import { updateLitigation, litigationUpdated } from '../store/litigations'
 import Form from 'react-bootstrap/Form';
 import { Button, FormControl, FormGroup } from 'react-bootstrap';
 
-const EditLitigation = ({lawyers, litProfile}) => {
+const EditLitigation = ({ litProfile}) => {
+
+    const lawyers = useSelector((store) => store.lawyers.list)
+
+    console.log(lawyers)
+    const lawyer = lawyers.map((law) => {
+        return law.first_name, law.last_name})
 
     const dispatch = useDispatch()
 
@@ -21,14 +27,15 @@ const EditLitigation = ({lawyers, litProfile}) => {
         governing_law: litProfile.governing_law,
         industry: litProfile.industry,
         claims: litProfile.claims,
-        counterclaims: litProfile.counterclaims
+        counterclaims: litProfile.counterclaims,
+        lawyer: ''
 
     })
-    console.log(lit.court)
+    
     const handleChange = e => {
         setLit({...lit, [e.target.name]: e.target.value})
     }
-    console.log(lit)
+
     const handleSubmit = e => {
         e.preventDefault()
         let litigations = {
@@ -36,11 +43,34 @@ const EditLitigation = ({lawyers, litProfile}) => {
             id: litProfile.id
         }
         dispatch(updateLitigation(litigations))
-
     }
 
   return (
     <div>
+
+        <Form.Label>Lawyer: {lawyer}</Form.Label>
+        <Form.Select 
+           type='' 
+           name='lawyer.id' 
+           options={lawyer}
+           getoptionlabel={lawyer}
+           // getOptionValue={({lawyer_id}) => lawyer_id } 
+           defaultValue={lawyer} 
+           placeholder='LawyerId' 
+           onChange={console.log(lawyer)}>
+       </Form.Select>   
+
+       <Form.Label>Lawyer: </Form.Label>
+        <Form.Select>
+           <option>'Select Menu'</option>
+            <option value='1'>One</option>
+            <option value='2'>Two</option>
+            <option value='3'>Three</option>
+       </Form.Select> 
+
+
+
+
         <Form onSubmit={handleSubmit}>
         <FormGroup>
         <Form.Label>Caption: </Form.Label>
@@ -91,10 +121,9 @@ const EditLitigation = ({lawyers, litProfile}) => {
         <FormControl type='number' name='counterclaims' defaultValue={lit.industry} placeholder='Industry' onChange={e => {lit.counterclaims = e.target.value;}}>
         </FormControl>
         
-        <Form.Label>Lawyer: </Form.Label>
+        {/* <Form.Label>Lawyer: </Form.Label>
         <FormControl type='number' name='lawyer_id' defaultValue={lit.lawyer_id} placeholder='LawyerId' onChange={e => {lit.lawyer_id = e.target.value;}}>
-        </FormControl>
-
+        </FormControl> */}
 
         <button type='submit'>Update</button>
         </FormGroup>

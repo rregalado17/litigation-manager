@@ -13,6 +13,7 @@ const LawyersContainer = ( {lawyersArray} ) => {
   return(
     <div>
       <h2>Browse the profiles of lawyers in our system:</h2>
+        {console.log(lawyersArray)}
       <CardGroup>
       {lawyersArray && lawyersArray.length && lawyersArray.map((lawyer) => {
         return <div key={lawyer.id}>

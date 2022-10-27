@@ -9,9 +9,11 @@ const EditLitigation = ({lawyers, litProfile}) => {
     const dispatch = useDispatch()
 
     const [lit, setLit] = useState({
-        caption: '',
-        lawyer_id: '',
+        caption: litProfile.caption,
+        status: litProfile.status,
+        lawyer_id: litProfile.lawyer.id,
         id: litProfile.id
+
     })
     console.log(lit)
 
@@ -22,12 +24,11 @@ const EditLitigation = ({lawyers, litProfile}) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(litProfile.id)
-        // let lit = {
-        //     ...lit,
-        //     id: litProfile.id
-        // }
-        dispatch(updateLitigation(lit))
+        let litigations = {
+            ...lit,
+            id: litProfile.id
+        }
+        dispatch(updateLitigation(litigations))
 
     }
 
@@ -40,11 +41,10 @@ const EditLitigation = ({lawyers, litProfile}) => {
         <FormControl
             type='text'
             name='caption'
-            defaultValue={litProfile.caption}
+            defaultValue={lit.caption}
             placeholder='Caption'
             onChange={e => {
                 lit.caption = e.target.value;
-                // setLit(lit)
             }}
             >
         </FormControl>
@@ -52,7 +52,7 @@ const EditLitigation = ({lawyers, litProfile}) => {
         <FormControl
             type='number'
             name='lawyer_id'
-            defaultValue={litProfile.lawyer.id}
+            defaultValue={lit.lawyer_id}
             placeholder='LawyerId'
             onChange={e => {
                 lit.lawyer_id = e.target.value;
@@ -63,7 +63,7 @@ const EditLitigation = ({lawyers, litProfile}) => {
         <FormControl
             type='text'
             name='status'
-            defaultValue={litProfile.status}
+            defaultValue={lit.status}
             placeholder='Status'
             onChange={e => {
                 lit.status = e.target.value;

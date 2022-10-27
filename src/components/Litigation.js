@@ -50,7 +50,7 @@ const Litigation = ( { litigationsArray } ) => {
       <p>Counterclaims: {litProfile ? litProfile.counterclaims : null}</p>
       <Button onClick={() => handleClick(litProfile)}>Edit Profile</Button><p></p>
       {toggleEdit && (
-      //  <div><UpdateLitigation lawyersId={lawyersId} litigations={litProfile}/><br></br></div>
+      //  <div><UpdateLitigation litigations={litProfile}/><br></br></div>
        <div><EditLitigation lawyers={lawyersId} litProfile={litProfile}/><br></br></div>
       )}
       <Button onClick={() => handleDelete(litProfile)}>Delete</Button>

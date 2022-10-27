@@ -38,7 +38,7 @@ class UpdateLitigation extends Component {
         caption: '',
         court: '',
         judge: '',
-        lawyer_id: '',
+        lawyer_id: [],
         status: '',
         complaint_date: '',
         legal_areas: '',
@@ -85,7 +85,7 @@ class UpdateLitigation extends Component {
             onChange={this.handleChange}
             />
           </FormGroup>
-          {/* <FormGroup controlId='formBasicText'>
+          <FormGroup controlId='formBasicText'>
           <Form.Label>Lawyer: </Form.Label>
           <FormControl 
             type="text"
@@ -94,7 +94,7 @@ class UpdateLitigation extends Component {
             name="lawyer_id"
             onChange={this.handleChange}
             />
-          </FormGroup> */}
+          </FormGroup>
 
 
 
@@ -104,7 +104,7 @@ class UpdateLitigation extends Component {
 
 
 
-          <FormGroup controlId='formBasicText'>
+          {/* <FormGroup controlId='formBasicText'>
           <Form.Label>Lawyer: </Form.Label>
           <FormControl 
             type="text"
@@ -114,7 +114,7 @@ class UpdateLitigation extends Component {
             onChange={this.handleChange}
             />
           </FormGroup>
-
+ */}
 
 
 

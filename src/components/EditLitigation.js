@@ -47,8 +47,8 @@ const EditLitigation = ({ litProfile}) => {
 
   return (
     <div>
-
-        <Form.Label>Lawyer: {lawyer}</Form.Label>
+{/* 
+        <Form.Label>Lawyer</Form.Label>
         <Form.Select 
            type='' 
            name='lawyer.id' 
@@ -58,15 +58,15 @@ const EditLitigation = ({ litProfile}) => {
            defaultValue={lawyer} 
            placeholder='LawyerId' 
            onChange={console.log(lawyer)}>
-       </Form.Select>   
+       </Form.Select>    */}
 
-       <Form.Label>Lawyer: </Form.Label>
+       {/* <Form.Label>Lawyer: </Form.Label>
         <Form.Select>
            <option>'Select Menu'</option>
             <option value='1'>One</option>
             <option value='2'>Two</option>
             <option value='3'>Three</option>
-       </Form.Select> 
+       </Form.Select>  */}
 
 
 
@@ -118,8 +118,10 @@ const EditLitigation = ({ litProfile}) => {
         </FormControl>
 
         <Form.Label>Counterclaims: </Form.Label>
-        <FormControl type='number' name='counterclaims' defaultValue={lit.industry} placeholder='Industry' onChange={e => {lit.counterclaims = e.target.value;}}>
+        <FormControl type='number' name='counterclaims' defaultValue={lit.industry} placeholder='Counterclaims' onChange={e => {lit.counterclaims = e.target.value;}}>
         </FormControl>
+
+        
         
         {/* <Form.Label>Lawyer: </Form.Label>
         <FormControl type='number' name='lawyer_id' defaultValue={lit.lawyer_id} placeholder='LawyerId' onChange={e => {lit.lawyer_id = e.target.value;}}>

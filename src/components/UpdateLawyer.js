@@ -72,16 +72,6 @@ class UpdateLawyer extends Component {
             />
           </FormGroup>
           <FormGroup controlId='formBasicText'>
-          <Form.Label>Profile: </Form.Label>
-          <FormControl 
-            type="text"
-            placeholder="Profile"
-            value={this.state.profile}
-            name="profile"
-            onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId='formBasicText'>
           <Form.Label>Position: </Form.Label>
           <FormControl 
             type="text"
@@ -121,6 +111,19 @@ class UpdateLawyer extends Component {
             onChange={this.handleChange}
             />
           </FormGroup>
+          <FormGroup className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Profile: </Form.Label>
+          <FormControl 
+            as="textarea"
+            rows={3}
+            placeholder="Profile"
+            value={this.state.profile}
+            name="profile"
+            onChange={this.handleChange}
+            />
+          </FormGroup>
+
+
 
           {/* <Form.Label>First Name: <br></br><input type='text' placeholder="First Name" value={this.state.first_name} name="first_name" onChange={this.handleChange}/></Form.Label><p></p>
           <Form.Label>Last Name: <br></br><input type='text' placeholder='Last Name' value={this.state.last_name} name="last_name" onChange={this.handleChange}/></Form.Label><p></p>

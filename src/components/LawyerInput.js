@@ -12,6 +12,7 @@ class LawyerInput extends React.Component {
   state = {
     first_name: '', 
     last_name: '',
+    email: '',
     profile: '',
     position: '',
     practice: '',
@@ -31,6 +32,7 @@ handleSubmit = (event) => {
     this.setState({
         first_name: '', 
         last_name: '',
+        email: '',
         profile: '',
         position: '',
         practice: '',
@@ -62,14 +64,13 @@ render() {
                         name="last_name" 
                         onChange={this.handleChange}/>
                 </FormGroup>
-
-                <FormGroup controlId='formControlsTextarea'>
-                    <Form.Label>Profile: </Form.Label>
+                <FormGroup controlId='formBasicText'>
+                    <Form.Label>Email: </Form.Label>
                     <FormControl 
                         type='text' 
-                        placeholder='Profile' 
-                        value={this.state.profile} 
-                        name="profile" 
+                        placeholder='Email' 
+                        value={this.state.email} 
+                        name="email" 
                         onChange={this.handleChange}/>
                 </FormGroup>
                 <FormGroup controlId='formBasicText'>
@@ -87,7 +88,7 @@ render() {
                         type='text' 
                         placeholder='Practice' 
                         value={this.state.practice} 
-                        name="Practice" 
+                        name="practice" 
                         onChange={this.handleChange}/>
                 </FormGroup>
                 <FormGroup controlId='formBasicText'>
@@ -102,10 +103,20 @@ render() {
                 <FormGroup controlId='formBasicText'>
                     <Form.Label>Contact Number: </Form.Label>
                     <FormControl 
-                        type='integer' 
+                        type='text' 
                         placeholder='Contact Number' 
                         value={this.state.phone} 
-                        name="contact_number" 
+                        name="phone" 
+                        onChange={this.handleChange}/>
+                </FormGroup>
+                <FormGroup className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Profile: </Form.Label>
+                    <FormControl 
+                        as="textarea"
+                        rows={3}
+                        placeholder='Profile' 
+                        value={this.state.profile} 
+                        name="profile" 
                         onChange={this.handleChange}/>
                 </FormGroup>
                 <Button type="submit">Submit</Button>

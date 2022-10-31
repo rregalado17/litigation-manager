@@ -1,21 +1,22 @@
-import React, { Component, useState } from 'react'
+import React, { Component} from 'react'
 import { addLitigation, litigationAdded } from '../store/litigations'
 import { connect } from 'react-redux'
-import { useSelector } from 'react-redux';
 import { Button, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 
-
 class LitigationInput extends Component {
-
-//find a way to use selector to trap all of the lawyer ids
-
   state = {
     caption: '',
     court: '',
     judge: '',
     lawyer_id: [],
-    status: ''
+    status: '',
+    opposing_party: '',
+    legal_areas: '',
+    governing_law: '',
+    industry: '',
+    claims: '',
+    counterclaims: ''
   }
 
   handleChange = (event) => {
@@ -32,70 +33,92 @@ class LitigationInput extends Component {
         court: '',
         judge: '',
         lawyer_id: [],
-        status: ''
+        status: '',
+        opposing_party: '',
+        legal_areas: '',
+        governing_law: '',
+        industry: '',
+        claims: '',
+        counterclaims: ''
     })
   }
 
   render() {
     return (
-
       <div>
         
         <Form onSubmit={this.handleSubmit}>
-            <label><h3>New Litgation Form</h3></label>
-            <p>Caption:  <input type='text' 
-                placeholder='Caption' 
-                value={this.state.caption} name="caption" 
-                onChange={this.handleChange}>
-            </input></p>
-            <p>Court: <input type='text' 
-                placeholder='Court' 
-                value={this.state.court} name="court" 
-                onChange={this.handleChange}>
-            </input></p>
-            <p>Judge: <input type='text' 
-                placeholder='Judge' 
-                value={this.state.judge} name="judge" 
-                onChange={this.handleChange}>
-            </input></p>
-            
-            <FormLabel>Managing Attorney:</FormLabel>
-            <Form.Select 
-                type='select' 
-                placeholder='Attorney' 
-                value={this.state.lawyer} 
-                name="status" 
-                onChange={this.handleChange}>
-            <option>Active</option>
-            <option>Concluded</option>
-            </Form.Select>
-            
-            
-            
-            <p>Lawyer: <input type='number' 
-                placeholder='lawyer' 
-                value={this.state.lawyer_id} name="lawyer_id" 
-                onChange={this.handleChange}>
-            </input></p>
-            <FormLabel>Case Status:</FormLabel>
-            <Form.Select 
-                type='select' 
-                placeholder='status' 
-                value={this.state.status} 
-                name="status" 
-                onChange={this.handleChange}>
-            <option>Active</option>
-            <option>Concluded</option>
-            </Form.Select>
+            <label><h3>New Litigation Form</h3></label>
             <FormGroup controlId='formBasicDate'>
-            <Form.Label>Date of Complaint: </Form.Label>
+            <Form.Label>Caption: </Form.Label>
+            <FormControl type="text" placeholder='Caption' value={this.state.caption} name="caption" onChange={this.handleChange}/>
+            </FormGroup>
+            
+            <FormGroup controlId='formBasicDate'>
+            <Form.Label>Court: </Form.Label>
+            <FormControl type="text" placeholder='Court' value={this.state.court} name="court"onChange={this.handleChange} />
+            </FormGroup>
+
+            <FormGroup controlId='formBasicDate'>
+            <Form.Label>Opposing Counsel: </Form.Label>
             <FormControl 
-            type="date"
-            value={this.state.complaint_date}
-            name="complaint_date"
+            type="text"
+            placeholder='Opposing Counsel' 
+            value={this.state.opposing_party}
+            name="opposing_party"
             onChange={this.handleChange}
             />
             </FormGroup>
+
+            <FormGroup controlId='formBasicDate'>
+            <Form.Label>Judge: </Form.Label>
+            <FormControl 
+            type="text"
+            placeholder='Judge' 
+            value={this.state.judge}
+            name="judge"
+            onChange={this.handleChange}
+            />
+            </FormGroup>
+            
+            <FormGroup controlId='formBasicDate'>
+            <Form.Label>Lawyer: </Form.Label>
+            <FormControl type="text" placeholder='Lawyer' value={this.state.lawyer_id} name="lawyer_id" onChange={this.handleChange}/>
+            </FormGroup>
+
+            <FormGroup>
+            <FormLabel>Case Status:</FormLabel>
+            <Form.Control type='text' placeholder='Status' value={this.state.status} name="status" onChange={this.handleChange}>
+            {/* <option>Active</option>
+            <option>Concluded</option> */}
+            </Form.Control>
+            </FormGroup>
+
+            <FormGroup>
+            <Form.Label>Areas of Law: </Form.Label>
+            <FormControl type="text" placeholder='Areas of Law' value={this.state.legal_areas} name="legal_areas" onChange={this.handleChange}/>
+            </FormGroup>
+
+            <FormGroup>
+            <Form.Label>Governing Law: </Form.Label>
+            <FormControl type="text" placeholder='Governing Law' value={this.state.governing_law} name="governing_law" onChange={this.handleChange}/>
+            </FormGroup>
+
+            <FormGroup>
+            <Form.Label>Industry: </Form.Label>
+            <FormControl type="text" placeholder='Industry' value={this.state.industry} name="industry" onChange={this.handleChange}/>
+            </FormGroup>
+
+            <FormGroup controlId='formBasicText'>
+            <Form.Label>Claims: </Form.Label>
+            <FormControl type="number" placeholder='Claims' value={this.state.claims} name="claims" onChange={this.handleChange}/>
+            </FormGroup>
+
+            <FormGroup controlId='formBasicText'>
+            <Form.Label>Counterclaims: </Form.Label>
+            <FormControl type="number" placeholder='Claims' value={this.state.counterclaims} name="counterclaims" onChange={this.handleChange}/>
+            </FormGroup>
+
             <p><Button type='submit'>Add Litigation</Button></p> 
         </Form>
       </div>
